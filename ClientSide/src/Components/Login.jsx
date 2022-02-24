@@ -17,12 +17,12 @@ function Login(){
 
     const login = async (e) => {
         e.preventDefault();
-        await Services.userLogin(data)
+        await Services.login(data)
         .then(({data})=>{
           console.log(data);
           sessionStorage.setItem('userID', data.id);
           sessionStorage.setItem('userName', data.firstName)
-          navigate("/");
+          navigate("/admin/home");
         }).catch(({response})=>{
           console.log(response);
         });
