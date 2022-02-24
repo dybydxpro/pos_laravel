@@ -8,6 +8,10 @@ function Login(){
     const navigate = useNavigate();
     const [data, setData] = useState();
 
+    sessionStorage.setItem('userID', 0);
+    sessionStorage.setItem('userName', "");
+    sessionStorage.setItem('type', "");
+
     function handle(e){
         const newData = {...data};
         newData[e.target.id] = e.target.value;
@@ -21,8 +25,14 @@ function Login(){
         .then(({data})=>{
           console.log(data);
           sessionStorage.setItem('userID', data.id);
-          sessionStorage.setItem('userName', data.firstName)
-          navigate("/admin/home");
+          sessionStorage.setItem('userName', data.userName);
+          sessionStorage.setItem('type', data.type);
+          if(data.type == "Admin"){
+            navigate("/admin");
+          }
+          else{
+            navigate("/cashier");
+          }
         }).catch(({response})=>{
           console.log(response);
         });

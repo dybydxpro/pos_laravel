@@ -21,10 +21,12 @@ class UserController extends Controller
         }
         else{
             if($data['password'] == $password){
-                $id = User::All()->where('userName', $data['userName'])->first()->_id;
+                $id = User::All()->where('userName', $data['userName'])->first()->id;
                 $userName = User::All()->where('userName', $data['userName'])->first()->userName;
+                $type = User::All()->where('userName', $data['userName'])->first()->type;
                 $returnData["id"] = $id;
                 $returnData["userName"] = $userName;
+                $returnData["type"] = $type;
                 return response()->json($returnData, 200);
             }
             else{
