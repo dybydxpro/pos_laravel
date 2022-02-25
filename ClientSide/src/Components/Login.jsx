@@ -46,11 +46,11 @@ function Login(){
                 </div>
                 <h1 className="h3 mb-3 fw-normal d-flex justify-content-center">Please sign in</h1>
                 <div className="form-floating">
-                    <input type="text" onChange={(e)=>handle(e)} className="form-control" id="userName" placeholder="JohnSmidth"/>
+                    <input type="text" onChange={(e)=>handle(e)} className="form-control" id="userName" placeholder="JohnSmidth" required/>
                     <label htmlFor="userName">User Name</label>
                 </div>
                 <div className="form-floating">
-                    <input type="password" onChange={(e)=>handle(e)} className="form-control" id="password" placeholder="Password"/>
+                    <input type="password" onChange={(e)=>handle(e)} className="form-control" id="password" placeholder="Password" required/>
                     <label htmlFor="password">Password</label>
                 </div>
 

@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import Services from "../../../Services";
 
-function ItemFetch(){
+function UserFetch(){
     const [data, setData] = useState([])
 
     useEffect(()=>{
-        fetchItem() 
+        fetchEmployee() 
     },[])
 
-    const fetchItem = async () => {
-        await Services.getAllItems().then(({data})=>{
+    const fetchEmployee = async () => {
+        await Services.getAllUser().then(({data})=>{
             setData(data)
         })
     }
@@ -25,10 +25,10 @@ function ItemFetch(){
                     <thead className="table-dark">
                         <tr className="text-center">
                             <th scope="col">#</th>
-                            <th scope="col">Item</th>
-                            <th scope="col">Unit</th>
-                            <th scope="col">Creater ID</th>
-                            <th scope="col">Options</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Type</th>
+                            <th scope="col" width="300px">Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,10 +36,14 @@ function ItemFetch(){
                             data.map(datas =>
                                 <tr key={datas.id}>
                                     <th scope="row">{datas.id}</th>
-                                    <td>{datas.item}</td>
-                                    <td>{datas.unit}</td>
-                                    <td>{datas.createrID}</td>
-                                    <td><Link to={`/admin/item/edit/${datas.id}`} className='btn btn-warning me-2'> Edit </Link></td>
+                                    <td>{datas.name}</td>
+                                    <td>{datas.userName}</td>
+                                    <td>{datas.type}</td>
+                                    <td>
+                                        <Link to={`/admin/user/edit/${datas.id}`} className='btn btn-warning me-2'> Edit </Link>
+                                        &nbsp;
+                                        <Link to={`/admin/user/resetpassword/${datas.id}`} className='btn btn-warning me-2'> Reset Password </Link>
+                                    </td>
                                 </tr>
                             )
                         }
@@ -50,4 +54,4 @@ function ItemFetch(){
     );
 }
 
-export default ItemFetch;
+export default UserFetch;

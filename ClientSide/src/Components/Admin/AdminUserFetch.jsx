@@ -1,8 +1,7 @@
-import "../../CSS/Dashbord.css"
 import Dashboad from "./Comps/Dashboad";
-import ItemEdit from "./Comps/ItemEdit";
+import UserFetch from "./Comps/UserFetch";
 
-function AdminItemEdit(){
+function AdminUserFetch(){
     return(
         <div>
             <div className="row justify-content-md-center">
@@ -11,7 +10,7 @@ function AdminItemEdit(){
                 </div>
                 <div className="col">
                     <div>
-                        <ItemEdit />
+                        <UserFetch />
                     </div>
                 </div>
             </div>       
@@ -19,4 +18,4 @@ function AdminItemEdit(){
     );
 }
 
-export default AdminItemEdit;
+export default AdminUserFetch;

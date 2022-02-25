@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ItemController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,10 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/login', [UserController::class, 'login']);
-
-/*
 Route::prefix('/user')->group(function () {
-    Route::post('/login', [UserController::class, 'login']);
-    Route::post('/signup', [UserController::class, 'signup']);
-});*/
+    Route::get('/', [UserController::class, 'getAllUser']);  //OK
+    Route::get('/{id}', [UserController::class, 'getByID']);  //OK
+    Route::post('/login', [UserController::class, 'login']);  //OK
+    Route::post('/create', [UserController::class, 'createNew']);  //OK
+    Route::put('/edit', [UserController::class, 'updateUser']);  //OK
+    Route::put('/resetpassword', [UserController::class, 'resetPassword']); //OK 
+});
+
+Route::prefix('/item')->group(function () {
+    Route::get('/', [ItemController::class, 'getAllItem']); //OK
+    Route::get('/{id}', [ItemController::class, 'getByID']);  //OK
+    Route::post('/add', [ItemController::class, 'createItem']); //OK
+    Route::put('/edit', [ItemController::class, 'editItem']);  //OK
+});

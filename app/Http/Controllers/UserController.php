@@ -7,6 +7,31 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    public function getAllUser(){
+        $user = User::All("id", "name", "userName", "type");
+        return response()->json($user, 200);
+    }
+
+    public function getByID($id){
+        try{
+            $user = User::Find($id);
+            if($user != "[]"){
+                $data = new User;
+                $data->id = $user["id"];
+                $data->name = $user["name"];
+                $data->userName = $user["userName"];
+                $data->type = $user["type"];
+                return response()->json($data, 200);
+            }
+            else{
+                return response()->json("User account not found!", 200);
+            }
+        }
+        catch(Exception $e){
+            return response()->json("User account not found!", 200);
+        }
+    }
+
     public function login(Request $request){
         $validated = $request->validate([
             'userName' => 'required',
@@ -33,5 +58,55 @@ class UserController extends Controller
                 return response()->json("Wrong password.", 400);
             }
         }
+    }
+
+    public function createNew(Request $request){
+        $validated = $request->validate([
+            'name' => 'required',
+            'userName' => 'required',
+            'password' => 'required',
+            'type' => 'required',
+        ]);
+
+        $user = new User;
+        $data = $request->All();
+        $user->name = $data['name'];
+        $user->userName = $data['userName'];
+        $user->password = $data['password'];
+        $user->type = $data['type'];
+        $user->save();
+        return response()->json($user, 200);
+    }
+
+    public function updateUser(Request $request){
+        $validated = $request->validate([
+            'id' => 'required',
+            'name' => 'required',
+            'userName' => 'required',
+            'type' => 'required',
+        ]);
+
+        $data = $request->All();
+        $user = User::Find($data['id']);
+        $user->id = $data['id'];
+        $user->name = $data['name'];
+        $user->userName = $data['userName'];
+        $user->type = $data['type'];
+        $user->update($data);
+        return response()->json($user, 200);
+    }
+
+    public function resetPassword(Request $request){
+        $validated = $request->validate([
+            'id' => 'required',
+            'password' => 'required',
+        ]);
+
+        $data = $request->All();
+        $user = User::Find($data['id']);
+        $user->id = $data['id'];
+        $user->password = $data['password'];
+        $user->update($data);
+        return response()->json($user, 200);
     }
 }

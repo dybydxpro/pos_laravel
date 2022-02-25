@@ -5,16 +5,16 @@ import Home from "./Comps/Home";
 function AdminHome(){
     return(
         <div>
-            <tr>
-                <td style={{width: "280px"}}>
+            <div className="row justify-content-md-center">
+                <div className="col-2">
                     <Dashboad />
-                </td>
-                <td style={{width: "1080px"}}>
+                </div>
+                <div className="col">
                     <div>
                         <Home />
                     </div>
-                </td>
-            </tr>        
+                </div>
+            </div>        
         </div>
     );
 }
