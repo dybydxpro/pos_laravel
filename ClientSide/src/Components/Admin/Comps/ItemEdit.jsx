@@ -39,7 +39,7 @@ function ItemEdit(){
 
     return(
         <div className="container">
-            <div className="detailBox">
+            <div className="detailBox shadow bg-body rounded">
                 <h1 className='h1 d-flex justify-content-center'>Edit item details.</h1>
                 <br/>
                 <form onSubmit={(e) => updateItem(e)}>

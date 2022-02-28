@@ -27,7 +27,7 @@ function UserEdit(){
 
     const updateUser = async (e) => {
         e.preventDefault();
-        await Services.editItems(data)
+        await Services.updateUser(data)
         .then(({data})=>{
           console.log(data);
           navigate("/admin/user");
@@ -38,7 +38,7 @@ function UserEdit(){
 
     return(
         <div className="container">
-            <div className="detailBox">
+            <div className="detailBox shadow bg-body rounded">
                 <h1 className='h1 d-flex justify-content-center'>Edit user details.</h1>
                 <br/>
                 <form onSubmit={(e) => updateUser(e)}>
@@ -55,7 +55,10 @@ function UserEdit(){
                         <label htmlFor="userName" className="form-label">User Name</label>
                     </div>
                     <div className="form-floating mb-3">
-                        <input type="text" className="form-control" id="type" value={ data.type } onChange={(e) => handle(e)} placeholder="Type" required/>
+                        <select class="form-select form-select" id="type" value={ data.type } onChange={(e) => handle(e)}  aria-label=".form-select-sm example">
+                            <option value="Cashier">Cashier</option>
+                            <option value="Admin">Admin</option>
+                        </select>
                         <label htmlFor="type" className="form-label">Type</label>
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>

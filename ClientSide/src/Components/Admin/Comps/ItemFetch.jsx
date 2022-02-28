@@ -24,22 +24,22 @@ function ItemFetch(){
                 <table className="table">
                     <thead className="table-dark">
                         <tr className="text-center">
-                            <th scope="col">#</th>
-                            <th scope="col">Item</th>
-                            <th scope="col">Unit</th>
-                            <th scope="col">Creater ID</th>
-                            <th scope="col">Options</th>
+                            <th scope="col" width="100px">#</th>
+                            <th scope="col">Item Name</th>
+                            <th scope="col" width="150px">Unit</th>
+                            <th scope="col" width="150px">Creater ID</th>
+                            <th scope="col" width="150px">Options</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             data.map(datas =>
                                 <tr key={datas.id}>
-                                    <th scope="row">{datas.id}</th>
+                                    <th className="text-center" scope="row">{datas.id}</th>
                                     <td>{datas.item}</td>
-                                    <td>{datas.unit}</td>
-                                    <td>{datas.createrID}</td>
-                                    <td><Link to={`/admin/item/edit/${datas.id}`} className='btn btn-warning me-2'> Edit </Link></td>
+                                    <td className="text-center">{datas.unit}</td>
+                                    <td className="text-center">{datas.createrID}</td>
+                                    <td className="text-center"><Link to={`/admin/item/edit/${datas.id}`} className='btn btn-warning me-2'> Edit </Link></td>
                                 </tr>
                             )
                         }

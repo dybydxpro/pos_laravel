@@ -18,16 +18,16 @@ function UserFetch(){
     return(
         <div className="justify-content-end">
             <div className="text-center my-3">
-                <h2>List of Items.</h2>
+                <h2>List of Users.</h2>
             </div>
             <div className="container">
                 <table className="table">
                     <thead className="table-dark">
                         <tr className="text-center">
-                            <th scope="col">#</th>
+                            <th scope="col" width="100px">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">User Name</th>
-                            <th scope="col">Type</th>
+                            <th scope="col" width="150px">User Name</th>
+                            <th scope="col" width="150px">Type</th>
                             <th scope="col" width="300px">Options</th>
                         </tr>
                     </thead>
@@ -35,11 +35,11 @@ function UserFetch(){
                         {
                             data.map(datas =>
                                 <tr key={datas.id}>
-                                    <th scope="row">{datas.id}</th>
+                                    <th scope="row" className="text-center">{datas.id}</th>
                                     <td>{datas.name}</td>
-                                    <td>{datas.userName}</td>
-                                    <td>{datas.type}</td>
-                                    <td>
+                                    <td className="text-center">{datas.userName}</td>
+                                    <td className="text-center">{datas.type}</td>
+                                    <td className="text-center">
                                         <Link to={`/admin/user/edit/${datas.id}`} className='btn btn-warning me-2'> Edit </Link>
                                         &nbsp;
                                         <Link to={`/admin/user/resetpassword/${datas.id}`} className='btn btn-warning me-2'> Reset Password </Link>

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\StockController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,4 +35,11 @@ Route::prefix('/item')->group(function () {
     Route::get('/{id}', [ItemController::class, 'getByID']);  //OK
     Route::post('/add', [ItemController::class, 'createItem']); //OK
     Route::put('/edit', [ItemController::class, 'editItem']);  //OK
+});
+
+Route::prefix('/stock')->group(function () {
+    Route::get('/', [StockController::class, 'getAllStock']); //OK
+    Route::get('/{id}', [StockController::class, 'getByID']);  //OK
+    Route::post('/add', [StockController::class, 'createStock']); 
+    Route::put('/edit', [StockController::class, 'editStock']);  
 });

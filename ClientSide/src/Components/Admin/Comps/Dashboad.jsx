@@ -29,7 +29,9 @@ function Dashboard(){
                         <div className="collapse" id="stock-collapse">
                             <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li className="mx-4"><a href="/admin/stock/" className="text-white rounded">List of Stocks</a></li>
-                                <li className="mx-4"><a href="/admin/stock/add/" className="text-white rounded">Add new Stocks (GRN)</a></li>
+                                <li className="mx-4"><a href="/admin/stock/add/" className="text-white rounded">Add new Stocks</a></li>
+                                <li className="mx-4"><a href="/admin/grn" className="text-white rounded">List of Stocks GRN</a></li>
+                                <li className="mx-4"><a href="/admin/grn/add" className="text-white rounded">Add new GRN</a></li>
                             </ul>
                         </div>
                     </li>
@@ -59,7 +61,7 @@ function Dashboard(){
                 <div className="dropdown">
                     <a href="/" className="d-flex align-items-center link-light text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src={Admin} alt="" width="32" height="32" className="rounded-circle me-2"/>
-                        <strong>mdo</strong>
+                        <strong>{userName}</strong>
                     </a>
                     <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                         <li><a className="dropdown-item" href="/">Sign out</a></li>

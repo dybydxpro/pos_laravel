@@ -14,7 +14,7 @@ class Service {
         return http.post("/user/login", data);
     }
 
-    createNew(data){
+    createNewUser(data){
         return http.post("/user/create", data);
     }
 
@@ -41,6 +41,23 @@ class Service {
 
     editItems(data){
         return http.put("/item/edit/", data);
+    }
+
+    //Stocks
+    getAllStock(){
+        return http.get("/stock");
+    }
+
+    stockGetByID(id){
+        return http.get(`/stock/${id}`);
+    }
+
+    createStock(data){
+        return http.post("/stock/add", data);
+    }
+
+    editStock(data){ //Not functional
+        return http.put("/stock/edit", data);
     }
 }
 

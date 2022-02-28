@@ -27,26 +27,21 @@ function ItemAdd(){
     }
 
     return(
-        <div className="justify-content-end">
-            <br/>
-            <div className="">
+        <div className="container">
+            <div className="detailBox shadow bg-body rounded">
+                <h1 className='h1 d-flex justify-content-center'>Add New Item.</h1>
+                <br/>
                 <form onSubmit={ (e)=>addAddress(e) }>
-                    <div className="detailBox shadow bg-body rounded">
-                        <h1 className='h1 d-flex justify-content-center'>Add New Item.</h1>
-                        <br/>
-                        <div className="form-floating">
-                            <input type="text" className="form-control" id="item" onChange={(e) => handle(e)} placeholder="Add" required/>
-                            <label htmlFor="item">Title</label>
-                        </div>
-                        <div className="form-floating">
-                            <input type="text" className="form-control" id="unit" onChange={(e) => handle(e)} placeholder="Address Line 2" required/>
-                            <label htmlFor="unit">Unit</label>
-                        </div>
-                        <br/>
-                        <div className="form-floating d-flex justify-content-end">
-                            <button type='submit' className='btn btn-success'>Save</button>
-                        </div>
+                    <div className="form-floating mb-3">
+                        <input type="text" className="form-control" id="item" onChange={(e) => handle(e)} placeholder="Add" required/>
+                        <label htmlFor="item">Title</label>
                     </div>
+                    <div className="form-floating mb-3">
+                        <input type="text" className="form-control" id="unit" onChange={(e) => handle(e)} placeholder="Address Line 2" required/>
+                        <label htmlFor="unit">Unit</label>
+                    </div>
+                    <br/>
+                    <button type='submit' className='btn btn-success'>Save</button>
                 </form>
             </div>
         </div>

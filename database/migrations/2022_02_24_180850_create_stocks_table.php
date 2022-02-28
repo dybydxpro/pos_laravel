@@ -14,10 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('stocks', function (Blueprint $table) {
-            $table->id();
+            $table->id("stockID");
             $table->integer("itemID");
-            $table->integer("qty");
-            $table->integer("price");
+            $table->float("qty");
+            $table->float("holesale_price");
+            $table->float("holesaleretail_price");
+            $table->float("retail_price");
+            $table->integer("stockCreaterID");
             $table->timestamps();
         });
     }

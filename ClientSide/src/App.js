@@ -5,6 +5,11 @@ import CashierDashboad from './Components/Cashier/CashierHome';
 import AdminItemFetch from './Components/Admin/AdminItemFetch';
 import AdminItemAdd from './Components/Admin/AdminItemAdd';
 import AdminItemEdit from './Components/Admin/AdminItemEdit';
+import AdminStockFetch from "./Components/Admin/AdminStockFetch";
+import AdminStockAdd from "./Components/Admin/AdminStockAdd";
+import AdminGRNFetch from "./Components/Admin/AdminGRNFetch";
+import AdminGRNAdd from "./Components/Admin/AdminGRNAdd";
+import AdminGRNEdit from "./Components/Admin/AdminGRNEdit";
 import AdminUserFetch from './Components/Admin/AdminUserFetch';
 import AdminUserAdd from './Components/Admin/AdminUserAdd';
 import AdminUserEdit from "./Components/Admin/AdminUserEdit";
@@ -22,6 +27,11 @@ function App() {
           <Route path="/admin/item" element={<AdminItemFetch />} />
           <Route path="/admin/item/add/" element={<AdminItemAdd />} />
           <Route path="/admin/item/edit/:id" element={<AdminItemEdit />} />
+          <Route path="/admin/stock" element={<AdminStockFetch />} />
+          <Route path="/admin/stock/add" element={<AdminStockAdd />} />
+          <Route path="/admin/grn" element={<AdminGRNFetch />} />
+          <Route path="/admin/grn/add" element={<AdminGRNAdd />} />
+          <Route path="/admin/grn/edit/:id" element={<AdminGRNEdit />} />
           <Route path="/admin/user" element={<AdminUserFetch />} />
           <Route path="/admin/user/add" element={<AdminUserAdd />} />
           <Route path="/admin/user/edit/:id" element={<AdminUserEdit />} />
