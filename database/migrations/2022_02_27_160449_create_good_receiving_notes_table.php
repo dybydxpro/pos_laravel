@@ -19,11 +19,15 @@ return new class extends Migration
             $table->string("invoiceNo");
             $table->date("invoiceDate");
             $table->string("supplier");
+            $table->integer("itemID");
             $table->integer("stockID");
-            $table->float("qty");
+            $table->float("grnQty");
             $table->string("payType");
-            $table->date("duedate")->nullable();
-            $table->longText("remarks");
+            $table->float("bulckPrice");
+            $table->float("actualBulkPrice");
+            $table->integer("grnRecorderID");
+            $table->date("dueDate")->nullable();
+            $table->longText("remarks")->nullable();
             $table->timestamps();
         });
     }

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\GoodReceivingNoteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,11 +37,19 @@ Route::prefix('/item')->group(function () {
     Route::get('/{id}', [ItemController::class, 'getByID']);  //OK
     Route::post('/add', [ItemController::class, 'createItem']); //OK
     Route::put('/edit', [ItemController::class, 'editItem']);  //OK
+    Route::get('/searchByName/{name}', [ItemController::class, 'searchItemsByName']);  //OK
 });
 
 Route::prefix('/stock')->group(function () {
     Route::get('/', [StockController::class, 'getAllStock']); //OK
     Route::get('/{id}', [StockController::class, 'getByID']);  //OK
-    Route::post('/add', [StockController::class, 'createStock']); 
-    Route::put('/edit', [StockController::class, 'editStock']);  
+    Route::post('/add', [StockController::class, 'createStock']);  //OK
+    Route::put('/edit', [StockController::class, 'editStock']);  //Not Developed for use
+});
+
+Route::prefix('/grn')->group(function () {
+    Route::get('/', [GoodReceivingNoteController::class, 'getAllGRN']); //OK
+    Route::get('/{id}', [GoodReceivingNoteController::class, 'grnGetByID']);  //OK
+    Route::post('/add', [GoodReceivingNoteController::class, 'createGRN']);  //OK
+    Route::put('/edit', [GoodReceivingNoteController::class, 'editGRN']);  //OK
 });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Item;
 
@@ -44,5 +45,11 @@ class ItemController extends Controller
         $items = Item::find($data['id']);
         $items->update($data);
         return response()->json($items, 200);
+    }
+
+    
+    function searchItemsByName($name){
+        $item = DB::table('items')->where('item','LIKE', '%'.$name.'%')->get();
+        return response()->json($item, 200);
     }
 }

@@ -17,4 +17,6 @@ class Stock extends Model
         "retail_price",
         "createrID"
     ];
+
+    protected $primaryKey = 'stockID';
 }

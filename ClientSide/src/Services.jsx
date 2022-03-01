@@ -43,6 +43,10 @@ class Service {
         return http.put("/item/edit/", data);
     }
 
+    searchItemsByName(name){ //Not functional
+        return http.get(`/item/searchByName/${name}`);
+    }
+
     //Stocks
     getAllStock(){
         return http.get("/stock");
@@ -58,6 +62,27 @@ class Service {
 
     editStock(data){ //Not functional
         return http.put("/stock/edit", data);
+    }
+
+    searchStockByItemID(id){ //Not functional
+        return http.get(`/stock/searchByItemID/${id}`);
+    }
+
+    //Good Receiving Note
+    getAllGRN(){
+        return http.get("/grn");
+    }
+
+    grnGetByID(id){
+        return http.get(`/grn/${id}`);
+    }
+
+    createGRN(data){
+        return http.post("/grn/add", data);
+    }
+
+    editGRN(data){ 
+        return http.put("/grn/edit", data);
     }
 }
 

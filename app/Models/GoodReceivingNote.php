@@ -11,8 +11,17 @@ class GoodReceivingNote extends Model
 
     protected $fillable = [
         "grnDate",
+        "invoiceNo",
+        "invoiceDate",
+        "supplier",
+        "itemID",
         "stockID",
-        "qty",
-        "payType"
+        "grnQty",
+        "payType",
+        "bulckPrice",
+        "actualBulkPrice",
+        "grnRecorderID",
     ];
+
+    protected $primaryKey = 'grnID';
 }
