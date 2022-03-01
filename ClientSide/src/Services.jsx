@@ -47,6 +47,10 @@ class Service {
         return http.get(`/item/searchByName/${name}`);
     }
 
+    getItemsSearch(){
+        return http.get("/item/forsele");
+    }
+
     //Stocks
     getAllStock(){
         return http.get("/stock");

@@ -46,10 +46,16 @@ function Dashboard(){
                             </ul>
                         </div>
                     </li>
-                    <li>
-                        <a href="/" className="nav-link link-light">
-                        Products
-                        </a>
+                    <li className="nav-item">
+                        <button className="btn btn-toggle align-items-center rounded collapsed text-white" data-bs-toggle="collapse" data-bs-target="#sales-collapse" aria-expanded="true">
+                            Sales Point
+                        </button>
+                        <div className="collapse" id="sales-collapse">
+                            <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li className="mx-4"><a href="/admin/sale/" className="text-white rounded">List of Sale Details</a></li>
+                                <li className="mx-4"><a href="/admin/sale/add/" className="text-white rounded">New Bill</a></li>
+                            </ul>
+                        </div>
                     </li>
                     <li>
                         <a href="/" className="nav-link link-light">

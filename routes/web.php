@@ -38,6 +38,8 @@ Route::prefix('/item')->group(function () {
     Route::post('/add', [ItemController::class, 'createItem']); //OK
     Route::put('/edit', [ItemController::class, 'editItem']);  //OK
     Route::get('/searchByName/{name}', [ItemController::class, 'searchItemsByName']);  //OK
+    Route::get('/forsele', [ItemController::class, 'getItemsForItems']); //OK
+
 });
 
 Route::prefix('/stock')->group(function () {

@@ -14,6 +14,7 @@ import AdminUserFetch from './Components/Admin/AdminUserFetch';
 import AdminUserAdd from './Components/Admin/AdminUserAdd';
 import AdminUserEdit from "./Components/Admin/AdminUserEdit";
 import AdminUserResetPassword from "./Components/Admin/AdminUserResetPassword";
+import AdminBillAdd from "./Components/Admin/AdminBillAdd";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/admin/user/add" element={<AdminUserAdd />} />
           <Route path="/admin/user/edit/:id" element={<AdminUserEdit />} />
           <Route path="/admin/user/resetpassword/:id" element={<AdminUserResetPassword />} />
+          <Route path="/admin/sale/add/" element={<AdminBillAdd />} />
         </Routes>
       </BrowserRouter>
     </div>
