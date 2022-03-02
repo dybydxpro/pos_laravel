@@ -67,16 +67,16 @@ function GRNEdit(){
                             <label htmlFor="supplier">&nbsp;&nbsp;Supplier</label>
                         </div>
                     </div>
-                    
+
                     <div className="row row-cols-3">
                         <div className="form-floating mb-3 ">
-                            <input type="text" className="form-control" id="itemID" value={data.itemID} onChange={(e) => handle(e)} placeholder="Item ID" required/>
+                            <input type="text" className="form-control" id="itemID" value={data.itemID} onChange={(e) => handle(e)} placeholder="Item ID" required disabled/>
                             <label htmlFor="itemID">&nbsp;&nbsp;Item ID</label>
                         </div>
                     </div>
                     <div className="row row-cols-3">
                         <div className="form-floating mb-3 ">
-                            <input type="text" className="form-control" id="stockID" value={data.stockID} onChange={(e) => handle(e)} placeholder="Stock ID" required/>
+                            <input type="text" className="form-control" id="stockID" value={data.stockID} onChange={(e) => handle(e)} placeholder="Stock ID" required disabled/>
                             <label htmlFor="stockID">&nbsp;&nbsp;Stock ID</label>
                         </div>
                     </div>

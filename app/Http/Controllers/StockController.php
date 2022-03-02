@@ -38,9 +38,15 @@ class StockController extends Controller
         $stock->retail_price = $data["retail_price"];
         $stock->stockCreaterID = $data["stockCreaterID"];
         $stock->save();
+        return response()->json($stock, 200);
     }
 
     function editStock(Request $request){
 
+    }
+
+    function searchStockByItemID($id){
+        $data = DB::table('stocks')->where('stocks.itemID', $id)->get();
+        return response()->json($data, 200);
     }
 }

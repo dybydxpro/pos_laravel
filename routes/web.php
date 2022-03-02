@@ -47,6 +47,7 @@ Route::prefix('/stock')->group(function () {
     Route::get('/{id}', [StockController::class, 'getByID']);  //OK
     Route::post('/add', [StockController::class, 'createStock']);  //OK
     Route::put('/edit', [StockController::class, 'editStock']);  //Not Developed for use
+    Route::get('/searchByItemID/{id}', [StockController::class, 'searchStockByItemID']);  
 });
 
 Route::prefix('/grn')->group(function () {
