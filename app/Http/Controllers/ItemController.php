@@ -42,7 +42,7 @@ class ItemController extends Controller
         ]);
 
         $data = $request->All();
-        $items = Item::find($data['id']);
+        $items = Item::find($data['itemID']);
         $items->update($data);
         return response()->json($items, 200);
     }

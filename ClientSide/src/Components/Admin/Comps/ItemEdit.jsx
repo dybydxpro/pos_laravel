@@ -44,12 +44,12 @@ function ItemEdit(){
                 <br/>
                 <form onSubmit={(e) => updateItem(e)}>
                     <div className="form-floating mb-3">
-                        <input type="text" className="form-control" id="id" value={ data.id } onChange={(e) => handle(e)} placeholder="Name" disabled/>
-                        <label htmlFor="id" className="form-label">ID</label>
+                        <input type="text" className="form-control" id="itemID" value={ data.itemID } onChange={(e) => handle(e)} placeholder="Name" disabled/>
+                        <label htmlFor="id" className="form-label">Item ID</label>
                     </div>
                     <div className="form-floating mb-3">
                         <input type="text" className="form-control" id="item" value={ data.item } onChange={(e) => handle(e)} placeholder="Name" required/>
-                        <label htmlFor="item" className="form-label">Item</label>
+                        <label htmlFor="item" className="form-label">Item Name</label>
                     </div>
                     <div className="form-floating mb-3">
                         <input type="text" className="form-control" id="unit" value={ data.unit } onChange={(e) => handle(e)} placeholder="Type" required/>

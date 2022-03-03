@@ -118,7 +118,6 @@ class GRNAdd extends React.Component{
                                 <label htmlFor="supplier">&nbsp;&nbsp;Supplier</label>
                             </div>
                         </div>
-                        
                         <div className="row row-cols-3">
                             <div className="form-floating mb-3 ">
                                 <input type="text" className="form-control" id="search" onChange={(e) => this.searchHandle(e)} placeholder="Item ID" required/>
@@ -128,7 +127,7 @@ class GRNAdd extends React.Component{
                                 <select className="form-select form-select mb-3" onChange={(e) => {this.selectItem(e); this.handle(e)}} id="itemID" required>
                                     <option value=""></option>
                                     {   
-                                        item.map(items => <option key={items.id} value={items.id}>{items.item}</option> )
+                                        item.map(items => <option key={items.itemID} value={items.itemID}>{items.item}</option> )
                                     }
                                 </select>
                                 <label htmlFor="itemID">&nbsp;&nbsp;Items</label>

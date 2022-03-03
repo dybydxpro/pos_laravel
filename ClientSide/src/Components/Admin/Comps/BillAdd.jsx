@@ -1,5 +1,6 @@
 import React from 'react';
 import Services from "../../../Services";
+//import { useNavigate } from 'react-router-dom';
 
 class BillAdd extends React.Component{
     constructor(props){
@@ -8,6 +9,7 @@ class BillAdd extends React.Component{
             item: [],
             stock: [],
             data:[],
+            billList:[],
         }
     }
 
@@ -21,12 +23,18 @@ class BillAdd extends React.Component{
             this.setState({stock: data});
             console.log(data);
         })
+
+        var id = sessionStorage.getItem("userID");
+        Services.getCartItems(id).then(({data})=>{
+            this.setState({billList: data});
+            console.log(data);
+        })    
     }
 
     async handleData(e){
         const newData = {...this.state.data};
         newData[e.target.id] = e.target.value;
-        newData["billRecorderID"] = sessionStorage.getItem("userID");
+        newData["userID"] = sessionStorage.getItem("userID");
         this.setState({data: newData});
         console.log(newData);
     }
@@ -64,58 +72,153 @@ class BillAdd extends React.Component{
                 this.setState({stock: data});
                 console.log(data);
             })
+            //Get data to data
+            /*Services.getByID(search).then(({data})=>{
+                console.log(data);
+                this.setState({data: data});
+            }).catch(({response})=>{ console.log(response); })*/
         }
+    }
+
+    async refreshPage() {
+        window.location.reload(false);
+      }
+
+    async adaToDatabase(e){
+        e.preventDefault();
+        await Services.addCartItems(this.state.data)
+        .then(({data})=>{
+          console.log(data);
+          this.refreshPage();
+          //navigate("/admin/sale/add");
+        }).catch(({response})=>{
+          console.log(response);
+        })
     }
 
     render() {
         const {item} = this.state;
         const {stock} = this.state;
-        const {data} = this.state;
+        //const {data} = this.state;
+        const {billList} = this.state;
+
+        /*function adaToDatabase(e){
+            e.preventDefault();
+            Services.addCartItems(this.state.data)
+            .then(({data})=>{
+              console.log(data);
+              navigate("/admin/sale/add");
+            }).catch(({response})=>{
+              console.log(response);
+            })
+        }*/
+
+        const deleteCartItem = async (id) => {
+            await Services.deleteCartItem(id).then(({data})=>{
+                console.log(data);
+                this.componentDidMount();
+                //fetchEmployee();
+              }).catch(({response:{data}})=>{
+                console.log(data);
+              })
+        }
+
+        function tableDataFetch(){
+            if(billList.length == 0 || billList === undefined){
+                return(
+                    <tr>
+                        <th colSpan={6} className="text-center"> No data</th>
+                    </tr>
+                )
+            }
+            else{
+                return(
+                    billList.map((data) =>
+                        <tr key={data.cartID}>
+                            <td className="text-center">{data.itemID}</td>
+                            <td className="text-center">{data.stockID}</td>
+                            <td>{data.item}</td>
+                            <td className="text-center">{data.unit}</td>
+                            <td className="text-end">{data.cartQty.toFixed(2)}</td>
+                            <td className="text-end">{data.cartPrice.toFixed(2)}</td>
+                            <td className="text-center">
+                                <button type="button" className="btn btn-danger me-2" onClick={()=>deleteCartItem(data.cartID)}> Delete </button>
+                            </td>
+                        </tr>
+                    )
+                )
+            }   
+        }
+
         return (
             <div className="container">
-            <div className="detailBox">
-                <h1 className='h1 d-flex justify-content-center'>Add New Bill.</h1>
-                <br/>
-                <form>
-                    <div className="form-floating mb-3">
-                        <input type="text" className="form-control" onChange={(e) => this.searchHandle(e)} id="search" placeholder="Search" required/>
-                        <label htmlFor="search">Search</label>
-                    </div>
-                    <div className="form-floating mb-3">
-                        <select className="form-select form-select mb-3" onChange={(e) => {this.selectItem(e); this.handleData(e)}} id="itemID" required>
-                            <option value=""></option>
-                            {   
-                                item.map(datas => <option key={datas.id} value={datas.id}>{datas.item}</option> )
-                            }
-                        </select>
-                        <label htmlFor="item">Item</label>
-                    </div>
-                    <div className="form-floating mb-3">
-                        <select className="form-select form-select mb-3" onChange={(e) => this.handleData(e)} id="stockID" required>
-                            <option value=""></option>
-                            {   
-                                stock.map(stocks => <option key={stocks.stockID} value={stocks.stockID}>{stocks.retail_price}</option> )
-                            }
-                        </select>
-                        <label htmlFor="stock">Stock Price</label>
-                    </div>
-                    <div className="form-floating mb-3">
-                        <input type="text" className="form-control" value={data.itemID} id="itemID" placeholder="Search" required disabled/>
-                        <label htmlFor="search">Item ID</label>
-                    </div>
-                    <div className="form-floating mb-3">
-                        <input type="text" className="form-control"  id="stockID" placeholder="Search" required disabled/>
-                        <label htmlFor="search">Stock ID</label>
-                    </div>
+                <div className="detailBox">
+                    <h1 className='h1 d-flex justify-content-center'>Add New Bill.</h1>
                     <br/>
-                    <button type='submit' className='btn btn-success'>Save</button>
-                </form>
+                    <form onSubmit={(e) => this.adaToDatabase(e)}>
+                        <div className="form-floating mb-3">
+                            <input type="text" className="form-control" onChange={(e) => this.searchHandle(e)} id="search" placeholder="Search"/>
+                            <label htmlFor="search">Search</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <select className="form-select form-select mb-3" onChange={(e) => {this.selectItem(e); this.handleData(e)}} id="itemID" required>
+                                <option value=""></option>
+                                {   
+                                    item.map(datas => <option key={datas.itemID} value={datas.itemID}>{datas.item}</option> )
+                                }
+                            </select>
+                            <label htmlFor="item">Item</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <select className="form-select form-select mb-3" onChange={(e) => this.handleData(e)} id="stockID" required>
+                                <option value=""></option>
+                                {   
+                                    stock.map(stocks => <option key={stocks.stockID} value={stocks.stockID}>{stocks.retail_price}</option> )
+                                }
+                            </select>
+                            <label htmlFor="stock">Stock Price</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <input type="text" className="form-control" onChange={(e) => this.handleData(e)} id="cartQty" placeholder="Qty" required/>
+                            <label htmlFor="cartQty">Qty</label>
+                        </div>
+                        <br/>
+                        <button type='submit' className='btn btn-primary'>Add to Bill</button>
+                    </form>
+                </div>  
+                <hr />
+                <br />
+                <div className="">
+                    <table className="table">
+                        <thead className="table-dark">
+                            <tr className="text-center">
+                                <th scope="col" width="100px">Item ID</th>
+                                <th scope="col" width="100px">Stock ID</th>
+                                <th scope="col">Item Name</th>
+                                <th scope="col" width="150px">Unit</th>
+                                <th scope="col" width="150px">Qty</th>
+                                <th scope="col" width="150px">Price</th>
+                                <th scope="col" width="150px">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            { tableDataFetch() }
+                        </tbody>
+                        <tfoot>
+                            <tr className="text-center">
+                                <th scope="col" width="100px">No. of Items: </th>
+                                <th scope="col" width="100px">{billList.length}</th>
+                                <th scope="col"></th>
+                                <th scope="col" width="150px"></th>
+                                <th scope="col" width="150px">Total (Rs.):</th>
+                                <th scope="col" width="150px"></th>
+                                <th scope="col" width="150px"></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
-            <div className="col-3">
-
-            </div>
-        </div>
-        );
+        );  
     }
 }
 

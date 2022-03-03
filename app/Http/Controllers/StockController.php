@@ -10,12 +10,12 @@ use App\Models\Item;
 class StockController extends Controller
 {
     function getAllStock(){
-        $data = DB::table('stocks')->join('items', 'items.id', '=', 'stocks.itemID')->get();
+        $data = DB::table('stocks')->join('items', 'items.itemID', '=', 'stocks.itemID')->get();
         return response()->json($data, 200);
     }
 
     function getByID($id){
-        $data = DB::table('stocks')->join('items', 'items.id', '=', 'stocks.itemID')->where('stocks.id', $id)->get();
+        $data = DB::table('stocks')->join('items', 'items.itemID', '=', 'stocks.itemID')->where('stocks.id', $id)->get();
         return response()->json($data, 200);
     }
 

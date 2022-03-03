@@ -55,7 +55,7 @@ function UserEdit(){
                         <label htmlFor="userName" className="form-label">User Name</label>
                     </div>
                     <div className="form-floating mb-3">
-                        <select class="form-select form-select" id="type" value={ data.type } onChange={(e) => handle(e)}  aria-label=".form-select-sm example">
+                        <select className="form-select form-select" id="type" value={ data.type } onChange={(e) => handle(e)}  aria-label=".form-select-sm example">
                             <option value="Cashier">Cashier</option>
                             <option value="Admin">Admin</option>
                         </select>

@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\GoodReceivingNoteController;
+use App\Http\Controllers\CartController;
 
 
 /*
@@ -55,4 +56,10 @@ Route::prefix('/grn')->group(function () {
     Route::get('/{id}', [GoodReceivingNoteController::class, 'grnGetByID']);  //OK
     Route::post('/add', [GoodReceivingNoteController::class, 'createGRN']);  //OK
     Route::put('/edit', [GoodReceivingNoteController::class, 'editGRN']);  //OK
+});
+
+Route::prefix('/cart')->group(function () {
+    Route::get('/getCartByName/{id}', [CartController::class, 'getCartItems']); //OK
+    Route::post('/addDataToCart', [CartController::class, 'addDataToCart']);  //OK
+    Route::get('/deleteCartItem/{id}', [CartController::class, 'deleteCartItem']); //OK - This is a delete method
 });

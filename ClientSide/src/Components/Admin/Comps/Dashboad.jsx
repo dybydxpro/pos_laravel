@@ -1,7 +1,19 @@
+import React, { useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import Admin from "./../../../image/Admin.png";
 
 function Dashboard(){
+    const navigate = useNavigate();
     let userName = sessionStorage.getItem("userName");
+    let userType = sessionStorage.getItem("type");
+
+    useEffect(()=>{
+        if(userType != "Admin"){
+            navigate("/");
+        }
+    },[])
+
+
 
     return(
         <div>

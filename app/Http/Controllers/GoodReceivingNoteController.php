@@ -12,7 +12,7 @@ class GoodReceivingNoteController extends Controller
     function getAllGRN(){
         //$data = GoodReceivingNote::orderBy('grnID', 'DESC')->get();
         $data = DB::table('good_receiving_notes')
-            ->join('items','items.id', '=', 'good_receiving_notes.itemID')
+            ->join('items','items.itemID', '=', 'good_receiving_notes.itemID')
             ->join('stocks','stocks.stockID', '=', 'good_receiving_notes.stockID')
             ->orderBy('grnID', 'DESC')->get();
         return response()->json($data, 200);

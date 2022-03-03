@@ -34,12 +34,12 @@ function ItemFetch(){
                     <tbody>
                         {
                             data.map(datas =>
-                                <tr key={datas.id}>
-                                    <th className="text-center" scope="row">{datas.id}</th>
+                                <tr key={datas.itemID}>
+                                    <th className="text-center" scope="row">{datas.itemID}</th>
                                     <td>{datas.item}</td>
                                     <td className="text-center">{datas.unit}</td>
                                     <td className="text-center">{datas.createrID}</td>
-                                    <td className="text-center"><Link to={`/admin/item/edit/${datas.id}`} className='btn btn-warning me-2'> Edit </Link></td>
+                                    <td className="text-center"><Link to={`/admin/item/edit/${datas.itemID}`} className='btn btn-warning me-2'> Edit </Link></td>
                                 </tr>
                             )
                         }

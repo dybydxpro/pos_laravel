@@ -50,7 +50,7 @@ function UserResetPassword(){
                 <form onSubmit={(e) => updateUser(e)}>
                     <div className="form-floating mb-3">
                         <input type="text" className="form-control" id="id" value={ data.id } onChange={(e) => handle(e)} placeholder="ID" disabled/>
-                        <label htmlFor="id" className="form-label">ID</label>
+                        <label htmlFor="id" className="form-label">User ID</label>
                     </div>
                     <div className="form-floating mb-3">
                         <input type="text" className="form-control" id="userName" value={ data.userName } onChange={(e) => handle(e)} placeholder="Name" disabled/>

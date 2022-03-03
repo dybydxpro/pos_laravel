@@ -34,7 +34,7 @@ function ItemAdd(){
                 <form onSubmit={ (e)=>addAddress(e) }>
                     <div className="form-floating mb-3">
                         <input type="text" className="form-control" id="item" onChange={(e) => handle(e)} placeholder="Add" required/>
-                        <label htmlFor="item">Title</label>
+                        <label htmlFor="item">Title Name</label>
                     </div>
                     <div className="form-floating mb-3">
                         <input type="text" className="form-control" id="unit" onChange={(e) => handle(e)} placeholder="Address Line 2" required/>

@@ -88,6 +88,20 @@ class Service {
     editGRN(data){ 
         return http.put("/grn/edit", data);
     }
+
+    //Bill Cart functions
+    getCartItems(id){
+        return http.get(`/cart/getCartByName/${id}`);
+    }
+
+    addCartItems(data){
+        return http.post("/cart/addDataToCart", data);
+    }
+
+    deleteCartItem(id){
+        return http.get(`/cart/deleteCartItem/${id}`);   // this is a delete method.
+    }
+
 }
 
 export default new Service();
