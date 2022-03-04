@@ -65,9 +65,9 @@ function UserFetch(){
                                     <td className="text-center">{datas.userName}</td>
                                     <td className="text-center">{datas.type}</td>
                                     <td className="text-center">
-                                        <Link to={`/admin/user/edit/${datas.id}`} className='btn btn-warning me-2'><i class="bi bi-pencil-square"></i> &nbsp; Edit </Link>
+                                        <Link to={`/admin/user/edit/${datas.id}`} className='btn btn-warning me-2'><i className="bi bi-pencil-square"></i> &nbsp; Edit </Link>
                                         &nbsp;
-                                        <Link to={`/admin/user/resetpassword/${datas.id}`} className='btn btn-warning me-2'><i class="bi bi-arrow-repeat"></i> &nbsp; Reset Password </Link>
+                                        <Link to={`/admin/user/resetpassword/${datas.id}`} className='btn btn-warning me-2'><i className="bi bi-arrow-repeat"></i> &nbsp; Reset Password </Link>
                                     </td>
                                 </tr>
                             )

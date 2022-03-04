@@ -31,7 +31,7 @@ function GRNEdit(){
         await Services.editGRN(data)
         .then(({data})=>{
           console.log(data);
-          navigate("/admin/grn");
+          navigate("/cashier/grn");
         }).catch(({response})=>{
           console.log(response);
         })

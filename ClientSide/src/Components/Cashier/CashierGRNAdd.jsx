@@ -1,8 +1,8 @@
 import "../../CSS/Dashbord.css"
 import Dashboad from "./Comps/Dashboad";
-import Home from "./Comps/Home";
+import GRNAdd from "./Comps/GRNAdd";
 
-function AdminHome(){
+function AdminGRNAdd(){
     return(
         <div>
             <div className="row justify-content-md-center">
@@ -11,12 +11,12 @@ function AdminHome(){
                 </div>
                 <div className="col">
                     <div>
-                        <Home />
+                        <GRNAdd />
                     </div>
                 </div>
-            </div>        
+            </div>       
         </div>
     );
 }
 
-export default AdminHome;
+export default AdminGRNAdd;

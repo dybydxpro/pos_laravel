@@ -21,14 +21,27 @@ import AdminHoleSaleBillFetch from "./Components/Admin/AdminHoleSaleBillFetch";
 import SaleBill from "./Components/Admin/Comps/SaleBill";
 import Holesalebill from "./Components/Admin/Comps/Holesalebill";
 
+import CashierItemFetch from './Components/Cashier/CashierItemFetch';
+import CashierItemAdd from './Components/Cashier/CashierItemAdd';
+import CashierItemEdit from './Components/Cashier/CashierItemEdit';
+import CashierStockFetch from "./Components/Cashier/CashierStockFetch";
+import CashierStockAdd from "./Components/Cashier/CashierStockAdd";
+import CashierGRNFetch from "./Components/Cashier/CashierGRNFetch";
+import CashierGRNAdd from "./Components/Cashier/CashierGRNAdd";
+import CashierGRNEdit from "./Components/Cashier/CashierGRNEdit";
+import CashierBillAdd from "./Components/Cashier/CashierBillAdd";
+import CashierHoleSaleBillAdd from "./Components/Cashier/CashierHoleSaleBillAdd"
+import CashierBillFetch from "./Components/Cashier/CashierBillFetch";
+import CashierHoleSaleBillFetch from "./Components/Cashier/CashierHoleSaleBillFetch";
+
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
+
           <Route path="/admin" element={<AdminDashboad />} />
-          <Route path="/cashier" element={<CashierDashboad />} />
           <Route path="/admin/item" element={<AdminItemFetch />} />
           <Route path="/admin/item/add/" element={<AdminItemAdd />} />
           <Route path="/admin/item/edit/:id" element={<AdminItemEdit />} />
@@ -47,6 +60,23 @@ function App() {
           <Route path="/admin/holesale/" element={<AdminHoleSaleBillFetch />} />
           <Route path="/admin/holesale/add/" element={<AdminHoleSaleBillAdd />} />
           <Route path="/admin/holesale/printbill/:id" element={<Holesalebill />} />
+
+          <Route path="/cashier" element={<CashierDashboad />} />
+          <Route path="/cashier/item" element={<CashierItemFetch />} />
+          <Route path="/cashier/item/add/" element={<CashierItemAdd />} />
+          <Route path="/cashier/item/edit/:id" element={<CashierItemEdit />} />
+          <Route path="/cashier/stock" element={<CashierStockFetch />} />
+          <Route path="/cashier/stock/add" element={<CashierStockAdd />} />
+          <Route path="/cashier/grn" element={<CashierGRNFetch />} />
+          <Route path="/cashier/grn/add" element={<CashierGRNAdd />} />
+          <Route path="/cashier/grn/edit/:id" element={<CashierGRNEdit />} />
+          <Route path="/cashier/sale/" element={<CashierBillFetch />} />
+          <Route path="/cashier/sale/add/" element={<CashierBillAdd />} />
+          <Route path="/cashier/sale/printbill/:id" element={<SaleBill />} />
+          <Route path="/cashier/holesale/" element={<CashierHoleSaleBillFetch />} />
+          <Route path="/cashier/holesale/add/" element={<CashierHoleSaleBillAdd />} />
+          <Route path="/cashier/holesale/printbill/:id" element={<Holesalebill />} />
+
         </Routes>
       </BrowserRouter>
     </div>

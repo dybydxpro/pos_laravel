@@ -129,7 +129,7 @@ class BillAdd extends React.Component{
         Services.sellBillItems(id)
         .then(({data})=>{
           console.log(data);
-          window.location.replace("/admin/sale/printbill/"+data);
+          window.location.replace("/cashier/sale/printbill/"+data);
         }).catch(({response})=>{
           console.log(response);
         })
@@ -171,7 +171,7 @@ class BillAdd extends React.Component{
                             <td className="text-end">{data.cartPrice.toFixed(2)}</td>
                             <td className="text-end">{data.sellPrice.toFixed(2)}</td>
                             <td className="text-center">
-                                <button type="button" className="btn btn-danger me-2" onClick={()=>deleteCartItem(data.cartID)}><i className="bi bi-trash"></i> &nbsp; Delete </button>
+                                <button type="button" className="btn btn-danger me-2" onClick={()=>deleteCartItem(data.cartID)}> Delete </button>
                             </td>
                         </tr>
                     )
@@ -245,7 +245,7 @@ class BillAdd extends React.Component{
                             <label htmlFor="paybleValue"></label>
                         </div>
                         <br/>
-                        <button type='submit' className='btn btn-primary'><i class="bi bi-plus-circle"></i> &nbsp;Add to Bill</button>
+                        <button type='submit' className='btn btn-primary'><i className="bi bi-plus-circle"></i> &nbsp;Add to Bill</button>
                     </form>
                 </div>  
                 <hr />
@@ -283,7 +283,7 @@ class BillAdd extends React.Component{
                     <br />
                     <form>
                         <div className='d-flex justify-content-end'>
-                            <button className="btn btn-secondary btn-lg" onClick={ () => this.PrintBill()} type="button"><i className="bi bi-printer"></i> &nbsp;Print Bill</button>
+                            <button class="btn btn-secondary btn-lg" onClick={ () => this.PrintBill()} type="button"><i className="bi bi-printer"></i> &nbsp;Print Bill</button>
                         </div>
                     </form>
                     <br /><br />

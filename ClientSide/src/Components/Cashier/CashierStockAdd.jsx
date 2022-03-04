@@ -1,8 +1,7 @@
-import "../../CSS/Dashbord.css"
 import Dashboad from "./Comps/Dashboad";
-import Home from "./Comps/Home";
+import StockAdd from "./Comps/StockAdd";
 
-function AdminHome(){
+function AdminStockAdd(){
     return(
         <div>
             <div className="row justify-content-md-center">
@@ -11,12 +10,12 @@ function AdminHome(){
                 </div>
                 <div className="col">
                     <div>
-                        <Home />
+                        <StockAdd />
                     </div>
                 </div>
-            </div>        
+            </div>       
         </div>
     );
 }
 
-export default AdminHome;
+export default AdminStockAdd;

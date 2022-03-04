@@ -86,7 +86,7 @@ function GRNFetch(){
                                     <th className="text-center">{datas.grnRecorderID}</th>
                                     <th className="text-center">{datas.dueDate}</th>
                                     <th>{datas.remarks}</th>
-                                    <th><Link to={`/admin/grn/edit/${datas.grnID}`} className='btn btn-warning me-2'><i className="bi bi-pencil-square"></i> &nbsp; Edit </Link></th>
+                                    <th><Link to={`/cashier/grn/edit/${datas.grnID}`} className='btn btn-warning me-2'><i className="bi bi-pencil-square"></i> &nbsp; Edit </Link></th>
                                 </tr>
                             )
                         }

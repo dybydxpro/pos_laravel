@@ -72,7 +72,7 @@ function StockFetch(){
                                     <td className="text-end">{datas.retail_price.toFixed(2)}</td>
                                     <td className="text-center">{datas.stockCreaterID}</td>
                                     <td className="text-center">
-                                        <Link to={`/admin/stock/edit/${datas.stockID}`} className='btn btn-warning me-2'><i class="bi bi-pencil-square"></i> &nbsp; Edit </Link>
+                                        <Link to={`/admin/stock/edit/${datas.stockID}`} className='btn btn-warning me-2'><i className="bi bi-pencil-square"></i> &nbsp; Edit </Link>
                                     </td>
                                 </tr>
                             )

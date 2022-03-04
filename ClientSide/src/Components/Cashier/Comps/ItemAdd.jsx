@@ -20,7 +20,7 @@ function ItemAdd(){
         await Services.addItems(data)
         .then(({data})=>{
           console.log(data);
-          navigate("/admin/item");
+          navigate("/cashier/item");
         }).catch(({response})=>{
           console.log(response);
         })

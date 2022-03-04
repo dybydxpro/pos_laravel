@@ -61,7 +61,7 @@ function UserEdit(){
                         </select>
                         <label htmlFor="type" className="form-label">Type</label>
                     </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary"><i className="bi bi-download"></i> &nbsp;Submit</button>
                 </form>
             </div>
         </div>

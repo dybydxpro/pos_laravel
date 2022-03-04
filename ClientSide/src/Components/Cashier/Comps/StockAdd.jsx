@@ -31,7 +31,7 @@ function StockAdd(){
         await Services.createStock(data)
         .then(({data})=>{
           console.log(data);
-          navigate("/admin/stock");
+          navigate("/cashier/stock");
         }).catch(({response})=>{
           console.log(response);
         })

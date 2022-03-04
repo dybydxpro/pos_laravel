@@ -64,7 +64,7 @@ function UserResetPassword(){
                         <input type="password" className="form-control" id="confirmPassword" onChange={(e) => handle(e)} placeholder="Confirm Password" value={data.confirmPassword} required/>
                         <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
                     </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary"><i className="bi bi-download"></i> &nbsp;Submit</button>
                 </form>
             </div>
         </div>

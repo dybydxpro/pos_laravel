@@ -167,7 +167,7 @@ class BillAdd extends React.Component{
                             <td className="text-end">{data.cartPrice.toFixed(2)}</td>
                             <td className="text-end">{data.sellPrice.toFixed(2)}</td>
                             <td className="text-center">
-                                <button type="button" className="btn btn-danger me-2" onClick={()=>deleteCartItem(data.cartID)}> Delete </button>
+                                <button type="button" className="btn btn-danger me-2" onClick={()=>deleteCartItem(data.cartID)}><i className="bi bi-trash"></i> &nbsp; Delete </button>
                             </td>
                         </tr>
                     )
@@ -194,7 +194,7 @@ class BillAdd extends React.Component{
         return (
             <div className="container">
                 <div className="detailBox">
-                    <h1 className='h1 d-flex justify-content-center'>Add New Bill.</h1>
+                    <h1 className='h1 d-flex justify-content-center'>Add New Holesale Bill.</h1>
                     <form onSubmit={(e) => this.adaToDatabase(e)}>
                         <div className="form-floating mb-3">
                             <input type="text" className="form-control" onChange={(e) => this.searchHandle(e)} id="search" placeholder="Search"/>
@@ -279,7 +279,7 @@ class BillAdd extends React.Component{
                     <br />
                     <form>
                         <div className='d-flex justify-content-end'>
-                            <button class="btn btn-secondary btn-lg" onClick={ () => this.PrintBill()} type="button"><i class="bi bi-printer"></i> &nbsp;Print Bill</button>
+                            <button class="btn btn-secondary btn-lg" onClick={ () => this.PrintBill()} type="button"><i className="bi bi-printer"></i> &nbsp;Print Bill</button>
                         </div>
                     </form>
                     <br /><br />

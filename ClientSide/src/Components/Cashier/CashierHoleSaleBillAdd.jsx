@@ -1,8 +1,8 @@
 import "../../CSS/Dashbord.css"
 import Dashboad from "./Comps/Dashboad";
-import Home from "./Comps/Home";
+import HoleSaleBillAdd from "./Comps/HoleSaleBillAdd";
 
-function AdminHome(){
+function AdminBillAdd(){
     return(
         <div>
             <div className="row justify-content-md-center">
@@ -11,12 +11,12 @@ function AdminHome(){
                 </div>
                 <div className="col">
                     <div>
-                        <Home />
+                        <HoleSaleBillAdd />
                     </div>
                 </div>
-            </div>        
+            </div>       
         </div>
     );
 }
 
-export default AdminHome;
+export default AdminBillAdd;

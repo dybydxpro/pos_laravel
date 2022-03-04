@@ -56,7 +56,7 @@ function UserAdd(){
                         <label htmlFor="type" className="form-label">Type</label>
                     </div>
                     <br/>
-                    <button type='submit' className='btn btn-success'><i class="bi bi-download"></i> &nbsp;Save</button>
+                    <button type='submit' className='btn btn-success'><i className="bi bi-download"></i> &nbsp;Save</button>
                 </form>
             </div>
         </div>

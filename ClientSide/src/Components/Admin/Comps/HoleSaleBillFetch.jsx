@@ -59,7 +59,7 @@ function HoleSaleBillFetch(){
                                     <td>{datas.item}</td>
                                     <td className="text-center">{datas.unit}</td>
                                     <td className="text-center">{datas.createrID}</td>
-                                    <td className="text-center"><Link to={`/admin/item/edit/${datas.itemID}`} className='btn btn-warning me-2'><i class="bi bi-pencil-square"></i> &nbsp; Edit </Link></td>
+                                    <td className="text-center"><Link to={`/admin/item/edit/${datas.itemID}`} className='btn btn-warning me-2'><i className="bi bi-pencil-square"></i> &nbsp; Edit </Link></td>
                                 </tr>
                             )
                         }
