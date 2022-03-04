@@ -49,4 +49,20 @@ class StockController extends Controller
         $data = DB::table('stocks')->where('stocks.itemID', $id)->get();
         return response()->json($data, 200);
     }
+
+    function searchStockByName($name){
+        $data = DB::table('stocks')->join('items', 'items.itemID', '=', 'stocks.itemID')->where('items.item','LIKE', '%'.$name.'%')->get();
+        return response()->json($data, 200);
+    }
+
+    function getAllStockQtyByID($id){
+        $data = DB::table('stocks')->where('stockID', $id)->pluck('qty');
+        $data = (int)substr($data, 1, -1);
+        return response()->json($data, 200);
+    }
+
+    function stockByID($id){
+        $data = Stock::find($id);
+        return response()->json($data, 200);
+    }
 }

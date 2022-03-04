@@ -4,20 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Cart;
+use App\Models\HolesaleCart;
 
-class CartController extends Controller
+class HoleSaleCartController extends Controller
 {
-    function getCartItems($id){
-        $data = DB::table('carts')
+    function getHSCartItems($id){
+        $data = DB::table('holesale_carts')
             //->select('cartID', 'itemID', 'stockID', 'item', 'unit', 'cartQty', 'cartPrice')
-            ->join('items', 'items.itemID', '=', 'carts.itemID')
-            ->join('stocks', 'stocks.stockID', '=', 'carts.stockID')
+            ->join('items', 'items.itemID', '=', 'holesale_carts.itemID')
+            ->join('stocks', 'stocks.stockID', '=', 'holesale_carts.stockID')
             ->where('userID', $id)->get();
         return response()->json($data, 200);
     }
 
-    function addDataToCart(Request $request){
+    function addDataToHSCart(Request $request){
         $validated = $request->validate([
             'itemID' => 'required',
             'stockID' => 'required',
@@ -27,10 +27,10 @@ class CartController extends Controller
             'userID' => 'required'
         ]); 
 
-        $cart = new Cart;
+        $cart = new HolesaleCart;
         $data = $request->All();
-        $retail_price = DB::table("stocks")->where('stockID', $data["stockID"])->pluck('retail_price');
-        $retail_price = (int)substr($retail_price, 1, -1);
+        $holesaleretail_price = DB::table("stocks")->where('stockID', $data["stockID"])->pluck('holesaleretail_price');
+        $holesaleretail_price = (int)substr($holesaleretail_price, 1, -1);
         $qty = (int)$data["cartQty"];
         $discount = (float)$data["discount"];
         //$itemID = DB::table("stocks")->where('stockID', $data["stockID"])->pluck('retail_price');
@@ -38,20 +38,20 @@ class CartController extends Controller
         $cart->itemID = $data["itemID"];
         $cart->stockID = $data["stockID"];
         $cart->cartQty = $data["cartQty"];
+        $cart->cartPrice = $qty *  $holesaleretail_price;
         if($data["checkBox"] == false){
-            $cart->sellPrice = ($qty *  $retail_price) - $discount;
+            $cart->sellPrice = ($qty *  $holesaleretail_price) - $discount;
         }
         elseif($data["checkBox"] == true){
-            $cart->sellPrice = ($qty *  $retail_price) - ($qty *  $retail_price)*$discount/100;
+            $cart->sellPrice = ($qty *  $holesaleretail_price) - ($qty *  $holesaleretail_price)*$discount/100;
         }
-        $cart->cartPrice = $qty *  $retail_price;
         $cart->userID = $data["userID"];
         $cart->save();
         return response()->json($cart, 200);
     }
 
-    function deleteCartItem($id){
-        $data = Cart::find($id);
+    function deleteHSCartItem($id){
+        $data = HolesaleCart::find($id);
         $data-> delete();
         //Cart::destroy($id);
         return response()->json($data, 200);

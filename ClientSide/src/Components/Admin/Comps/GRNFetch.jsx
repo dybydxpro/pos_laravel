@@ -15,10 +15,35 @@ function GRNFetch(){
         })
     }
 
+    function handle(e){
+        var search = e.target.value
+        if(search == ""){
+            Services.getAllGRN().then(({data})=>{
+                setData(data)
+            })
+        }
+        else{
+            Services.searchGRN(search).then(({data})=>{
+                setData(data);
+            })
+        }
+    }
+
     return(
         <div className="justify-content-end">
+            <br />
             <div className="text-center my-3">
                 <h2>List of Good Receiving Note.</h2>
+            </div>
+            <div className="container">
+                <div className="row justify-content-end">
+                    <div className="col col-3">
+                    <div className="form-floating mb-3">
+                        <input type="text" className="form-control" onChange={(e) => handle(e)} id="search" placeholder="Search"/>
+                        <label htmlFor="search" className="form-label">Search</label>
+                    </div>
+                    </div>
+                </div>
             </div>
             <div className="container-fluid">
                 <table className="table">
@@ -39,7 +64,7 @@ function GRNFetch(){
                             <th scope="col">Recorder ID</th>
                             <th scope="col">Due date</th>
                             <th scope="col">Remarks</th>
-                            <th scope="col">Options</th>
+                            <th scope="col" width="110px">Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,7 +86,7 @@ function GRNFetch(){
                                     <th className="text-center">{datas.grnRecorderID}</th>
                                     <th className="text-center">{datas.dueDate}</th>
                                     <th>{datas.remarks}</th>
-                                    <th><Link to={`/admin/grn/edit/${datas.grnID}`} className='btn btn-warning me-2'> Edit </Link></th>
+                                    <th><Link to={`/admin/grn/edit/${datas.grnID}`} className='btn btn-warning me-2'><i class="bi bi-pencil-square"></i> &nbsp; Edit </Link></th>
                                 </tr>
                             )
                         }

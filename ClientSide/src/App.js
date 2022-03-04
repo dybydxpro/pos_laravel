@@ -15,7 +15,11 @@ import AdminUserAdd from './Components/Admin/AdminUserAdd';
 import AdminUserEdit from "./Components/Admin/AdminUserEdit";
 import AdminUserResetPassword from "./Components/Admin/AdminUserResetPassword";
 import AdminBillAdd from "./Components/Admin/AdminBillAdd";
-
+import AdminHoleSaleBillAdd from "./Components/Admin/AdminHoleSaleBillAdd"
+import AdminBillFetch from "./Components/Admin/AdminBillFetch";
+import AdminHoleSaleBillFetch from "./Components/Admin/AdminHoleSaleBillFetch";
+import SaleBill from "./Components/Admin/Comps/SaleBill";
+import Holesalebill from "./Components/Admin/Comps/Holesalebill";
 
 function App() {
   return (
@@ -37,7 +41,12 @@ function App() {
           <Route path="/admin/user/add" element={<AdminUserAdd />} />
           <Route path="/admin/user/edit/:id" element={<AdminUserEdit />} />
           <Route path="/admin/user/resetpassword/:id" element={<AdminUserResetPassword />} />
+          <Route path="/admin/sale/" element={<AdminBillFetch />} />
           <Route path="/admin/sale/add/" element={<AdminBillAdd />} />
+          <Route path="/admin/sale/printbill/:id" element={<SaleBill />} />
+          <Route path="/admin/holesale/" element={<AdminHoleSaleBillFetch />} />
+          <Route path="/admin/holesale/add/" element={<AdminHoleSaleBillAdd />} />
+          <Route path="/admin/holesale/printbill/:id" element={<Holesalebill />} />
         </Routes>
       </BrowserRouter>
     </div>

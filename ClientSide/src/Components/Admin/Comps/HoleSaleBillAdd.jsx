@@ -25,7 +25,7 @@ class BillAdd extends React.Component{
         })
 
         var id = sessionStorage.getItem("userID");
-        Services.getCartItems(id).then(({data})=>{
+        Services.getHSCartItems(id).then(({data})=>{
             this.setState({billList: data});
             console.log(data);
         })    
@@ -111,7 +111,7 @@ class BillAdd extends React.Component{
 
     async adaToDatabase(e){
         e.preventDefault();
-        await Services.addCartItems(this.state.data)
+        await Services.addHSCartItems(this.state.data)
         .then(({data})=>{
           console.log(data);
           this.refreshPage();
@@ -120,16 +120,12 @@ class BillAdd extends React.Component{
         })
     }
 
-    /*async redirectBill(data){
-        window.location.replace("/admin/sale/printbill/"+data, false);
-    }*/
-
     async PrintBill(){
         var id = sessionStorage.getItem("userID");
-        Services.sellBillItems(id)
+        Services.holesellBillItems(id)
         .then(({data})=>{
           console.log(data);
-          window.location.replace("/admin/sale/printbill/"+data);
+          window.location.replace("/admin/holesale/printbill/"+data);
         }).catch(({response})=>{
           console.log(response);
         })
@@ -143,7 +139,7 @@ class BillAdd extends React.Component{
         const {stockValue} = this.state;
 
         const deleteCartItem = async (id) => {
-            await Services.deleteCartItem(id).then(({data})=>{
+            await Services.deleteHSCartItem(id).then(({data})=>{
                 console.log(data);
                 this.componentDidMount();
               }).catch(({response:{data}})=>{
@@ -217,7 +213,7 @@ class BillAdd extends React.Component{
                             <select className="form-select form-select mb-3" onChange={(e) => {this.handleData(e); this.selectStock(e)}} id="stockID" required>
                                 <option value=""></option>
                                 {   
-                                    stock.map(stocks => <option key={stocks.stockID} value={stocks.stockID}>{stocks.retail_price}</option> )
+                                    stock.map(stocks => <option key={stocks.stockID} value={stocks.stockID}>{stocks.holesaleretail_price}</option> )
                                 }
                             </select>
                             <label htmlFor="stock">Stock Price</label>
@@ -227,7 +223,7 @@ class BillAdd extends React.Component{
                             <label htmlFor="cartQty">Qty</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input type="number" className="form-control" value={data.cartQty * stockValue.retail_price} onChange={(e) => this.handleData(e)} id="price" placeholder="Price" required/>
+                            <input type="number" className="form-control" value={data.cartQty * stockValue.holesaleretail_price} onChange={(e) => this.handleData(e)} id="price" placeholder="Price" required/>
                             <label htmlFor="price">Price</label>
                         </div>
                         <div className="mb-3">
@@ -245,7 +241,7 @@ class BillAdd extends React.Component{
                             <label htmlFor="paybleValue"></label>
                         </div>
                         <br/>
-                        <button type='submit' className='btn btn-primary'><i class="bi bi-plus-circle"></i> &nbsp;Add to Bill</button>
+                        <button type='submit' className='btn btn-primary'><i class="bi bi-plus-circle"></i> &nbsp; Add to Bill</button>
                     </form>
                 </div>  
                 <hr />

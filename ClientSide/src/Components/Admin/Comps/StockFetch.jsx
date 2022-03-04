@@ -15,10 +15,34 @@ function StockFetch(){
         })
     }
 
+    function handle(e){
+        var search = e.target.value
+        if(search == ""){
+            Services.getAllStock().then(({data})=>{
+                setData(data)
+            })
+        }
+        else{
+            Services.searchStockByName(search).then(({data})=>{
+                setData(data);
+            })
+        }
+    }
+
     return(
         <div className="justify-content-end">
             <div className="text-center my-3">
                 <h2>List of Stock.</h2>
+            </div>
+            <div className="container">
+                <div className="row justify-content-end">
+                    <div className="col col-3">
+                    <div className="form-floating mb-3">
+                        <input type="text" className="form-control" onChange={(e) => handle(e)} id="search" placeholder="Search"/>
+                        <label htmlFor="search" className="form-label">Search Stock by Item Name</label>
+                    </div>
+                    </div>
+                </div>
             </div>
             <div className="container">
                 <table className="table">
@@ -32,7 +56,7 @@ function StockFetch(){
                             <th scope="col" width="150px">Holesale Retail Price (Rs.)</th>
                             <th scope="col" width="150px">Retail Price (Rs.)</th>
                             <th scope="col" width="100px">Creater ID</th>
-                            <th scope="col" width="100px">Options</th>
+                            <th scope="col" width="150px">Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,7 +72,7 @@ function StockFetch(){
                                     <td className="text-end">{datas.retail_price.toFixed(2)}</td>
                                     <td className="text-center">{datas.stockCreaterID}</td>
                                     <td className="text-center">
-                                        <Link to={`/admin/stock/edit/${datas.stockID}`} className='btn btn-warning me-2'> Edit </Link>
+                                        <Link to={`/admin/stock/edit/${datas.stockID}`} className='btn btn-warning me-2'><i class="bi bi-pencil-square"></i> &nbsp; Edit </Link>
                                     </td>
                                 </tr>
                             )

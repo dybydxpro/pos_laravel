@@ -2,28 +2,24 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import Services from "../../../Services";
 
-function ItemFetch(){
+function HoleSaleBillFetch(){
     const [data, setData] = useState([])
 
     useEffect(()=>{
-        fetchItem() 
-    },[])
-
-    const fetchItem = async () => {
-        await Services.getAllItems().then(({data})=>{
+        Services.fetchAllHSBillItems().then(({data})=>{
             setData(data)
-        })
-    }
+        }) 
+    },[])
 
     function handle(e){
         var search = e.target.value
         if(search == ""){
-            Services.getAllItems().then(({data})=>{
+            Services.fetchAllHSBillItems().then(({data})=>{
                 setData(data)
             })
         }
         else{
-            Services.searchItemsByName(search).then(({data})=>{
+            Services.fetchAllHSBillItemsByBillID(search).then(({data})=>{
                 setData(data);
             })
         }
@@ -32,14 +28,14 @@ function ItemFetch(){
     return(
         <div className="justify-content-end">
             <div className="text-center my-3">
-                <h2>List of Items.</h2>
+                <h2>List of Holesale Bill.</h2>
             </div>
             <div className="container">
                 <div className="row justify-content-end">
                     <div className="col col-3">
                     <div className="form-floating mb-3">
                         <input type="text" className="form-control" onChange={(e) => handle(e)} id="search" placeholder="Search"/>
-                        <label htmlFor="search" className="form-label">Search by Item Name</label>
+                        <label htmlFor="search" className="form-label">Search by Bill ID</label>
                     </div>
                     </div>
                 </div>
@@ -74,4 +70,4 @@ function ItemFetch(){
     );
 }
 
-export default ItemFetch;
+export default HoleSaleBillFetch;

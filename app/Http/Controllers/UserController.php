@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -108,5 +109,10 @@ class UserController extends Controller
         $user->password = $data['password'];
         $user->update($data);
         return response()->json($user, 200);
+    }
+
+    function searchUser($name){
+        $data = DB::table('users')->where('name', "LIKE", "%".$name."%")->get();
+        return response()->json($data, 200);
     }
 }

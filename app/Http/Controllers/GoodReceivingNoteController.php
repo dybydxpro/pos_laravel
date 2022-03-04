@@ -146,4 +146,19 @@ class GoodReceivingNoteController extends Controller
             }
         }
     }
+
+    function searchGRN($search){
+        $data = DB::table('good_receiving_notes')
+            ->join('items','items.itemID', '=', 'good_receiving_notes.itemID')
+            ->join('stocks','stocks.stockID', '=', 'good_receiving_notes.stockID')
+            ->where('grnID', 'Like', $search)
+            ->orWhere('grnDate','Like', "%".$search."%")
+            ->orWhere('invoiceNo','Like', "%".$search."%")
+            ->orWhere('invoiceDate','Like', "%".$search."%")
+            ->orWhere('supplier','Like', "%".$search."%")
+            ->orWhere('items.item','Like', "%".$search."%")
+            ->orWhere('payType','Like', "%".$search."%")
+            ->orderBy('grnID', 'DESC')->get();
+        return response()->json($data, 200);
+    }
 }

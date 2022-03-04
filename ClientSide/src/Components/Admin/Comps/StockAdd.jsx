@@ -67,7 +67,7 @@ function StockAdd(){
                         <label htmlFor="unit">Retail Price (Rs.)</label>
                     </div>
                     <br/>
-                    <button type='submit' className='btn btn-success'>Save</button>
+                    <button type='submit' className='btn btn-success'><i class="bi bi-download"></i> &nbsp;Save</button>
                 </form>
             </div>
         </div>

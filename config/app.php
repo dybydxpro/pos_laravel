@@ -163,7 +163,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Jenssegers\Mongodb\MongodbServiceProvider::class,
+        Barryvdh\dompdf\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -192,7 +192,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // ...
-    ])->toArray(),
+        'PDF' => Barryvdh\dompdf\Facade::class,
+    ])->toArray(),  
 
 ];
