@@ -9,6 +9,8 @@ use App\Models\Cart;
 use App\Models\Stock;
 use PDF;
 
+use Carbon\Carbon;
+
 class SalesController extends Controller
 {
     function fetchAllBillItems(){
@@ -29,6 +31,8 @@ class SalesController extends Controller
         $billID = 0;
         $billID = Sales::max('billID');
         $count = Cart::count('userID');
+        $mytime = Carbon::now();
+        $billDate =  $mytime->toDateTimeString();
         if($billID == "{}"){
             $billID = 1;
         }
@@ -36,12 +40,11 @@ class SalesController extends Controller
             ++$billID;
         }
 
-        //$d = DB::table('carts')->where('userID', $id)->first();
-
         for($i = 0; $i < $count; ++$i){
             $d = DB::table('carts')->where('userID', $id)->first();
             $sale = new Sales();
             $sale->billID = $billID;
+            $sale->billDate = $billDate;
             $sale->itemID = $d->itemID;
             $sale->stockID = $d->stockID;
             $sale->cartQty = $d->cartQty;

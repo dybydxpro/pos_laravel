@@ -129,7 +129,7 @@ class BillAdd extends React.Component{
         Services.sellBillItems(id)
         .then(({data})=>{
           console.log(data);
-          window.location.replace("/cashier/sale/printbill/"+data);
+          window.location.replace("/admin/sale/printbill/"+data);
         }).catch(({response})=>{
           console.log(response);
         })
@@ -171,7 +171,7 @@ class BillAdd extends React.Component{
                             <td className="text-end">{data.cartPrice.toFixed(2)}</td>
                             <td className="text-end">{data.sellPrice.toFixed(2)}</td>
                             <td className="text-center">
-                                <button type="button" className="btn btn-danger me-2" onClick={()=>deleteCartItem(data.cartID)}> Delete </button>
+                                <button type="button" className="btn btn-danger me-2" onClick={()=>deleteCartItem(data.cartID)}><i className="bi bi-trash"></i> &nbsp; Delete </button>
                             </td>
                         </tr>
                     )
@@ -232,7 +232,7 @@ class BillAdd extends React.Component{
                         </div>
                         <div className="mb-3">
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="1" onChange={(e) => this.checkBox(e)} value="" id="checkBox"/>
+                                <input className="form-check-input" type="checkbox" value="1" onChange={(e) => this.checkBox(e)} id="checkBox"/>
                                 <label className="form-check-label" htmlFor="checkeBox"> Discount in persentage (%) </label>
                             </div>
                             <div className="form-floating">
@@ -283,7 +283,7 @@ class BillAdd extends React.Component{
                     <br />
                     <form>
                         <div className='d-flex justify-content-end'>
-                            <button class="btn btn-secondary btn-lg" onClick={ () => this.PrintBill()} type="button"><i className="bi bi-printer"></i> &nbsp;Print Bill</button>
+                            <button className="btn btn-secondary btn-lg" onClick={ () => this.PrintBill()} type="button"><i className="bi bi-printer"></i> &nbsp;Print Bill</button>
                         </div>
                     </form>
                     <br /><br />

@@ -125,7 +125,7 @@ class BillAdd extends React.Component{
         Services.holesellBillItems(id)
         .then(({data})=>{
           console.log(data);
-          window.location.replace("/cashier/holesale/printbill/"+data);
+          window.location.replace("/admin/holesale/printbill/"+data);
         }).catch(({response})=>{
           console.log(response);
         })
@@ -194,7 +194,7 @@ class BillAdd extends React.Component{
         return (
             <div className="container">
                 <div className="detailBox">
-                    <h1 className='h1 d-flex justify-content-center'>Add New Holesale Bill.</h1>
+                    <h1 className='h1 d-flex justify-content-center'>Add New Wholesale Bill.</h1>
                     <form onSubmit={(e) => this.adaToDatabase(e)}>
                         <div className="form-floating mb-3">
                             <input type="text" className="form-control" onChange={(e) => this.searchHandle(e)} id="search" placeholder="Search"/>
@@ -228,7 +228,7 @@ class BillAdd extends React.Component{
                         </div>
                         <div className="mb-3">
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="1" onChange={(e) => this.checkBox(e)} value="" id="checkBox"/>
+                                <input className="form-check-input" type="checkbox" value="1" onChange={(e) => this.checkBox(e)} id="checkBox"/>
                                 <label className="form-check-label" htmlFor="checkeBox"> Discount in persentage (%) </label>
                             </div>
                             <div className="form-floating">
@@ -279,7 +279,7 @@ class BillAdd extends React.Component{
                     <br />
                     <form>
                         <div className='d-flex justify-content-end'>
-                            <button class="btn btn-secondary btn-lg" onClick={ () => this.PrintBill()} type="button"><i class="bi bi-printer"></i> &nbsp;Print Bill</button>
+                            <button className="btn btn-secondary btn-lg" onClick={ () => this.PrintBill()} type="button"><i className="bi bi-printer"></i> &nbsp;Print Bill</button>
                         </div>
                     </form>
                     <br /><br />

@@ -54,9 +54,9 @@ function Dashboard(){
                         <div className="collapse" id="sales-collapse">
                             <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li className="mx-4"><a href="/cashier/sale/" className="btn text-white rounded"><i className="bi bi-card-list"></i> &nbsp;List of Sale Details</a></li>
-                                <li className="mx-4"><a href="/cashier/holesale/" className="btn text-white rounded"><i className="bi bi-card-list"></i> &nbsp;List of H. Sale Details</a></li>
+                                <li className="mx-4"><a href="/cashier/holesale/" className="btn text-white rounded"><i className="bi bi-card-list"></i> &nbsp;List of W.Sale Details</a></li>
                                 <li className="mx-4"><a href="/cashier/sale/add/" className="btn text-white rounded"><i className="bi bi-file-earmark-plus"></i> &nbsp;New Bill</a></li>
-                                <li className="mx-4"><a href="/cashier/holesale/add/" className="btn text-white rounded"><i className="bi bi-file-earmark-plus"></i> &nbsp;New Holesale Bill</a></li>
+                                <li className="mx-4"><a href="/cashier/holesale/add/" className="btn text-white rounded"><i className="bi bi-file-earmark-plus"></i> &nbsp;New Wholesale Bill</a></li>
                             </ul>
                         </div>
                     </li>

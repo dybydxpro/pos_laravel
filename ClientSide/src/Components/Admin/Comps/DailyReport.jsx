@@ -93,7 +93,7 @@ function DailyReport(){
             <br />
             <div className="d-flex justify-content-center my-3">
                 <br />
-                <h1>Daily Hole Sales Chart.</h1>
+                <h1>Daily Whole Sales Chart.</h1>
             </div>
             <div className="container d-flex col-12 justify-content-center">
                 <Chart

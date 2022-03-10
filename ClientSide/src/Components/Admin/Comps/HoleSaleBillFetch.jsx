@@ -28,7 +28,7 @@ function HoleSaleBillFetch(){
     return(
         <div className="justify-content-end">
             <div className="text-center my-3">
-                <h2>List of Holesale Bill.</h2>
+                <h2>List of Wholesale Bill.</h2>
             </div>
             <div className="container">
                 <div className="row justify-content-end">

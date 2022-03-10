@@ -113,7 +113,7 @@ class ReportDashboard extends React.Component{
                     <div className="col-4">
                         <div className="shadow p-3 mb-5 bg-body rounded">
                             <ul className="list-group">
-                                <li className="list-group-item bg-dark text-light text-center">Top holesale selling items.</li>
+                                <li className="list-group-item bg-dark text-light text-center">Top wholesale selling items.</li>
                                 { printTopHSSellingItem() }
                             </ul>
                         </div>

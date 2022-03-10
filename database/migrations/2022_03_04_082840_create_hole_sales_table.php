@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('hole_sales', function (Blueprint $table) {
             $table->id('salesID');
             $table->integer('billID');
+            $table->date('billDate');
             $table->integer('itemID');
             $table->integer('stockID');
             $table->float('cartQty');

@@ -245,7 +245,7 @@ class BillAdd extends React.Component{
                             <label htmlFor="paybleValue"></label>
                         </div>
                         <br/>
-                        <button type='submit' className='btn btn-primary'><i class="bi bi-plus-circle"></i> &nbsp;Add to Bill</button>
+                        <button type='submit' className='btn btn-primary'><i className="bi bi-plus-circle"></i> &nbsp;Add to Bill</button>
                     </form>
                 </div>  
                 <hr />

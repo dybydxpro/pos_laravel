@@ -9,6 +9,8 @@ use App\Models\HolesaleCart;
 use App\Models\Stock;
 use PDF;
 
+use Carbon\Carbon;
+
 class HoleSalesController extends Controller
 {
     function fetchAllBillItems(){
@@ -29,6 +31,7 @@ class HoleSalesController extends Controller
         $billID = 0;
         $billID = HoleSales::max('billID');
         $count = HolesaleCart::count('userID');
+        $billDate = Carbon::now();
         if($billID == "{}"){
             $billID = 1;
         }
@@ -41,6 +44,7 @@ class HoleSalesController extends Controller
             $stockID = $d->stockID;
             $sale = new HoleSales();
             $sale->billID = $billID;
+            $sale->billDate = $billDate;
             $sale->itemID = $d->itemID;
             $sale->stockID = $d->stockID;
             $sale->cartQty = $d->cartQty;
