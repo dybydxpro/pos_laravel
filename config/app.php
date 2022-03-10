@@ -164,6 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\dompdf\ServiceProvider::class,
+        //Barryvdh\Snappy\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -193,6 +194,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'PDF' => Barryvdh\dompdf\Facade::class,
+        //'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+	    //'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
     ])->toArray(),  
 
 ];

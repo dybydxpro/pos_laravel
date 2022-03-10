@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Sales;
 use App\Models\HoleSales;
+use App\Models\PayDetails;
+use App\Models\PayHSDetails;
+
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -37,6 +41,33 @@ class DashboardController extends Controller
             ->get();
         return response()->json($data, 200);
     }
+
+    function getSalePayment(){
+        $today = Carbon::now();
+        $afterTwoWeeks = Carbon::now()->addDays(14);
+        $from =  $today->toDateTimeString();
+        $to = $afterTwoWeeks->toDateTimeString();
+        $data = DB::table('pay_details')
+            ->orderBy('dueDate','asc')
+            ->where('dueDate', '>=', $from)
+            ->where('dueDate', '<', $to)
+            ->get();
+        return response()->json($data, 200);
+    }
+
+    function getHoleSalePayment(){
+        $today = Carbon::now();
+        $afterTwoWeeks = Carbon::now()->addDays(14);
+        $from =  $today->toDateTimeString();
+        $to = $afterTwoWeeks->toDateTimeString();
+        $data = DB::table('pay_h_s_details')
+            ->orderBy('dueDate','asc')
+            ->where('dueDate', '>=', $from)
+            ->where('dueDate', '<', $to)
+            ->get();
+        return response()->json($data, 200);
+    }
+
 
     function chartData(){
         $data = Sales::select(DB::raw('SUM(sellPrice) as `data`'),DB::raw("DATE_FORMAT(created_at, '%Y-%m') labels"))

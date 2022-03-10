@@ -12,6 +12,8 @@ select * from carts;
 select * from holesale_carts;
 select * from sales;
 select * from hole_sales;
+select * from pay_details;
+select * from pay_h_s_details;
 
 INSERT INTO users (name, userName, password, type, created_at, updated_at) VALUES ( "Tharindu", "TharinduD", "123", "Admin", Null, Null);
 INSERT INTO users (name, userName, password, type, created_at, updated_at) VALUES ( "Sandun", "Sandun", "123", "Cashier", Null, Null);
@@ -34,7 +36,7 @@ INSERT INTO holesale_carts (itemID, stockID, cartQty, cartPrice, sellPrice, user
 (1, 2, 5, 301.25, 301.25, 1), (1, 1, 5, 276.25, 276.25, 1);
 
 UPDATE users SET type = "Cashier" WHERE id=2;
-UPDATE stocks SET itemID = 2 WHERE stockID=4;
+UPDATE stocks SET qty = 2 WHERE stockID=1;
 UPDATE good_receiving_notes SET itemID = 2 WHERE grnID=2;
 UPDATE good_receiving_notes SET stockID = 3 WHERE grnID=2;
 

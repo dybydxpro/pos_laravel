@@ -151,7 +151,7 @@ class BillAdd extends React.Component{
             if(billList.length == 0 || billList === undefined){
                 return(
                     <tr>
-                        <th colSpan={7} className="text-center"> No data</th>
+                        <th colSpan={8} className="text-center"> No data</th>
                     </tr>
                 )
             }

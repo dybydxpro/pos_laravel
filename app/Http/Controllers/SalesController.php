@@ -77,6 +77,13 @@ class SalesController extends Controller
                     ->join('stocks','stocks.stockID', '=', 'sales.stockID')->get();
         $pdf = PDF::loadView('pdf', compact('data'));
         $lable = 'Bill'.$id.'.pdf';
-        return $pdf->download($lable);
+        return $pdf->setPaper('a4', 'portrait')->download($lable);
     }
+
+    /*function bill($id){
+        $data = DB::table('sales')->where('billID', $id)
+                    ->join('items','items.itemID', '=', 'sales.itemID')
+                    ->join('stocks','stocks.stockID', '=', 'sales.stockID')->get();
+        return view('pdf', compact('data'));
+    }*/
 }

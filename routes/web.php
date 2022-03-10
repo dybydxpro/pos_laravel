@@ -10,6 +10,8 @@ use App\Http\Controllers\HoleSaleCartController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\HoleSalesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PayDetailsController;
+use App\Http\Controllers\PayHSDetailsController;
 
 
 /*
@@ -86,6 +88,8 @@ Route::prefix('/sale')->group(function () {
     Route::get('/sellBillItems/{id}', [SalesController::class, 'sellBillItems']); //OK
     Route::get('/billFetch/{id}', [SalesController::class, 'billFetch']); //OK
     Route::get('/downloadBill/{id}', [SalesController::class, 'downloadBill']); //OK
+
+    Route::get('/Bill/{id}', [SalesController::class, 'bill']); //OK
 });
 
 Route::prefix('/holesale')->group(function () {
@@ -94,14 +98,29 @@ Route::prefix('/holesale')->group(function () {
     Route::get('/sellBillItems/{id}', [HoleSalesController::class, 'sellBillItems']); //OK
     Route::get('/billFetch/{id}', [HoleSalesController::class, 'billFetch']); //OK
     Route::get('/downloadBill/{id}', [HoleSalesController::class, 'downloadBill']); //OK
+
+    
 });
 
 Route::prefix('/dashboard')->group(function () {
     Route::get('/lessStock', [DashboardController::class, 'lessStock']); //OK
     Route::get('/topSellItem', [DashboardController::class, 'topSellItem']); //
     Route::get('/topHSSellItem', [DashboardController::class, 'topHSSellItem']); //OK
+    Route::get('/getSalePayment', [DashboardController::class, 'getSalePayment']); //
+    Route::get('/getHoleSalePayment', [DashboardController::class, 'getHoleSalePayment']); //OK
+
     Route::get('/chartData', [DashboardController::class, 'chartData']); //OK
     Route::get('/dailyChartData', [DashboardController::class, 'dailyChartData']); //OK
     Route::get('/holesaleChartData', [DashboardController::class, 'holesaleChartData']); //OK
-    Route::get('/holesaleDailyChartData', [DashboardController::class, 'holesaleDailyChartData']); //OK
+    Route::get('/holesaleDailyChartData', [DashboardController::class, 'getHoleSalePayment']); //OK
+});
+
+Route::prefix('/pay')->group(function () {
+    Route::post('/add', [PayDetailsController::class, 'addPay']); //OK
+    Route::get('/fetch', [PayDetailsController::class, 'fetchPay']); //OK
+});
+
+Route::prefix('/payhs')->group(function () {
+    Route::post('/add', [PayHSDetailsController::class, 'addPay']); //OK
+    Route::get('/fetch', [PayHSDetailsController::class, 'fetchPay']); //OK
 });

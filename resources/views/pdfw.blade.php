@@ -30,7 +30,7 @@
                     Bill Date: {{ $billDate }}
                 </div>
                 <div>
-                    Bill Number: BLS{{ $billNumber }}
+                    Bill Number: BLW{{ $billNumber }}
                 </div>
             </div>
             

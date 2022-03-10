@@ -31,7 +31,8 @@ class HoleSalesController extends Controller
         $billID = 0;
         $billID = HoleSales::max('billID');
         $count = HolesaleCart::count('userID');
-        $billDate = Carbon::now();
+        $mytime = Carbon::now();
+        $billDate =  $mytime->toDateTimeString();
         if($billID == "{}"){
             $billID = 1;
         }
@@ -75,8 +76,8 @@ class HoleSalesController extends Controller
         $data = DB::table('hole_sales')->where('billID', $id)
                     ->join('items','items.itemID', '=', 'hole_sales.itemID')
                     ->join('stocks','stocks.stockID', '=', 'hole_sales.stockID')->get();
-        $pdf = PDF::loadView('pdf', compact('data'));
-        $lable = 'Bill'.$id.'.pdf';
-        return $pdf->download($lable);
+        $pdf = PDF::loadView('pdfw', compact('data'));
+        $lable = 'BillW'.$id.'.pdf';
+        return $pdf->setPaper('a4', 'portrait')->download($lable);
     }
 }

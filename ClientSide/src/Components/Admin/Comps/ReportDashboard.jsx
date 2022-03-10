@@ -8,6 +8,8 @@ class ReportDashboard extends React.Component{
             stock: [],
             topsell: [],
             tophssell: [],
+            saleReminds:[],
+            holeSaleReminds:[],
         }
     }
 
@@ -15,6 +17,8 @@ class ReportDashboard extends React.Component{
         this.stockLess();
         this.topHSSellItem();
         this.topSellItem();
+        this.getSalePayment();
+        this.getHoleSalePayment();
     }
 
     async stockLess(){
@@ -38,10 +42,26 @@ class ReportDashboard extends React.Component{
         })
     }
 
+    async getSalePayment(){
+        Services.getSalePayment().then(({data})=>{
+            this.setState({saleReminds: data});
+            console.log(data);
+        })
+    }
+
+    async getHoleSalePayment(){
+        Services.getHoleSalePayment().then(({data})=>{
+            this.setState({holeSaleReminds: data});
+            console.log(data);
+        })
+    }
+
     render(){
         const {stock} = this.state;
         const {topsell} = this.state;
         const {tophssell} = this.state;
+        const {saleReminds} = this.state;
+        const {holeSaleReminds} = this.state;
         const userName = sessionStorage.getItem("userName");
 
         function printStockLess(){
@@ -53,7 +73,7 @@ class ReportDashboard extends React.Component{
             else{
                 return(
                     stock.map((data) =>
-                        <li className="list-group-item bg-danger text-light" key={data.stockID}>Item Name: {data.item}, &nbsp; StockID: {data.stockID}, &nbsp; Qty: {data.qty}</li>
+                        <li className="list-group-item bg-danger text-light" key={data.stockID}>Item Name: <b>{data.item}</b>, &nbsp; StockID: <b>{data.stockID}</b>, &nbsp; Qty: <b>{data.qty}</b></li>
                     )
                 )
             }   
@@ -68,7 +88,7 @@ class ReportDashboard extends React.Component{
             else{
                 return(
                     tophssell.map((data) =>
-                        <li className="list-group-item bg-primary text-light" key={data.itemID}>Item: {data.itemID}, &nbsp; Item Name: <b>{data.item}</b></li>
+                        <li className="list-group-item bg-primary text-light" key={data.itemID}>Item: <b>{data.itemID}</b>, &nbsp; Item Name: <b>{data.item}</b></li>
                     )
                 )
             }   
@@ -83,7 +103,37 @@ class ReportDashboard extends React.Component{
             else{
                 return(
                     topsell.map((data) =>
-                        <li className="list-group-item bg-warning text-light" key={data.itemID}>Item: {data.itemID}, &nbsp; Item Name: <b>{data.item}</b></li>
+                        <li className="list-group-item bg-warning text-light" key={data.itemID}>Item: <b>{data.itemID}</b>, &nbsp; Item Name: <b>{data.item}</b></li>
+                    )
+                )
+            }   
+        }
+
+        function printSalePayment() {
+            if(saleReminds.length == 0 || saleReminds === undefined){
+                return(
+                    <li className="list-group-item">No items found!</li>
+                )
+            }
+            else{
+                return(
+                    saleReminds.map((data) =>
+                        <li className="list-group-item bg-info text-dark" key={data.payID}>Date: <b>{data.dueDate}</b>, &nbsp; Payment Type: <b>{data.payType}</b> &nbsp; Value: <b>{data.payblePrice}</b></li>
+                    )
+                )
+            }   
+        }
+
+        function printHoleSalePayment() {
+            if(holeSaleReminds.length == 0 || holeSaleReminds === undefined){
+                return(
+                    <li className="list-group-item">No items found!</li>
+                )
+            }
+            else{
+                return(
+                    holeSaleReminds.map((data) =>
+                        <li className="list-group-item bg-secondary text-light" key={data.payID}>Date: <b>{data.dueDate}</b>, &nbsp; Payment Type: <b>{data.payType}</b> &nbsp; Value: <b>{data.payblePrice}</b></li>
                     )
                 )
             }   
@@ -123,6 +173,22 @@ class ReportDashboard extends React.Component{
                             <ul className="list-group">
                                 <li className="list-group-item bg-dark text-light text-center">Stock Warnings</li>
                                 { printStockLess() }
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="col-4">
+                        <div className="shadow p-3 mb-5 bg-body rounded">
+                            <ul className="list-group">
+                                <li className="list-group-item bg-dark text-light text-center">Upcomming Sale Payment Reminds.</li>
+                                { printSalePayment()}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="col-4">
+                        <div className="shadow p-3 mb-5 bg-body rounded">
+                            <ul className="list-group">
+                                <li className="list-group-item bg-dark text-light text-center">Upcomming Whole Sale Payment Reminds.</li>
+                                { printHoleSalePayment() }
                             </ul>
                         </div>
                     </div>

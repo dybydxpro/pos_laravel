@@ -155,7 +155,7 @@ class BillAdd extends React.Component{
             if(billList.length == 0 || billList === undefined){
                 return(
                     <tr>
-                        <th colSpan={7} className="text-center"> No data</th>
+                        <th colSpan={8} className="text-center"> No data</th>
                     </tr>
                 )
             }
@@ -199,6 +199,7 @@ class BillAdd extends React.Component{
             <div className="container">
                 <div className="detailBox">
                     <h1 className='h1 d-flex justify-content-center'>Add New Bill.</h1>
+                    
                     <form onSubmit={(e) => this.adaToDatabase(e)}>
                         <div className="form-floating mb-3">
                             <input type="text" className="form-control" onChange={(e) => this.searchHandle(e)} id="search" placeholder="Search"/>

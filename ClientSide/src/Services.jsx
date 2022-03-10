@@ -192,6 +192,15 @@ class Service {
         return http.get('/dashboard/topHSSellItem');
     }
 
+    getSalePayment(){
+        return http.get('/dashboard/getSalePayment');
+    }
+
+    getHoleSalePayment(){
+        return http.get('/dashboard/getHoleSalePayment');
+    }
+
+
     chartData(){
         return http.get('/dashboard/chartData');
     }
@@ -206,6 +215,15 @@ class Service {
 
     holesaleDailyChartData(){
         return http.get('/dashboard/holesaleDailyChartData');
+    }
+
+    //Pay 
+    addPay(data){
+        return http.post('/pay/add', data);
+    }
+
+    addHSPay(data){
+        return http.post('/payhs/add', data);
     }
 }
 

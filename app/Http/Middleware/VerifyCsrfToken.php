@@ -18,6 +18,7 @@ class VerifyCsrfToken extends Middleware
         '/grn/add','/grn/edit',
         '/cart/addDataToCart',
         '/holesalecart/addDataToHSCart',
+        '/pay/add', '/payhs/add'
         
     ];
 }
