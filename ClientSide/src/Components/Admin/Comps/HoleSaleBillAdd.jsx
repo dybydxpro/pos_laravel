@@ -228,7 +228,7 @@ class BillAdd extends React.Component{
                         </div>
                         <div className="mb-3">
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="1" onChange={(e) => this.checkBox(e)} value="" id="checkBox"/>
+                                <input className="form-check-input" type="checkbox" value="1" onChange={(e) => this.checkBox(e)} id="checkBox"/>
                                 <label className="form-check-label" htmlFor="checkeBox"> Discount in persentage (%) </label>
                             </div>
                             <div className="form-floating">
@@ -241,7 +241,7 @@ class BillAdd extends React.Component{
                             <label htmlFor="paybleValue"></label>
                         </div>
                         <br/>
-                        <button type='submit' className='btn btn-primary'><i class="bi bi-plus-circle"></i> &nbsp; Add to Bill</button>
+                        <button type='submit' className='btn btn-primary'><i className="bi bi-plus-circle"></i> &nbsp; Add to Bill</button>
                     </form>
                 </div>  
                 <hr />
@@ -279,7 +279,7 @@ class BillAdd extends React.Component{
                     <br />
                     <form>
                         <div className='d-flex justify-content-end'>
-                            <button class="btn btn-secondary btn-lg" onClick={ () => this.PrintBill()} type="button"><i className="bi bi-printer"></i> &nbsp;Print Bill</button>
+                            <button className="btn btn-secondary btn-lg" onClick={ () => this.PrintBill()} type="button"><i className="bi bi-printer"></i> &nbsp;Print Bill</button>
                         </div>
                     </form>
                     <br /><br />

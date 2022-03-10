@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import Services from "../../../Services";
 import icon from '../../../image/bootstrap-logo.svg';
 import "../../../CSS/bill.css";

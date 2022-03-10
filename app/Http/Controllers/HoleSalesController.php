@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\HoleSales;
 use App\Models\HolesaleCart;
-use App\Models\Cart;
 use App\Models\Stock;
 use PDF;
 
@@ -38,6 +38,7 @@ class HoleSalesController extends Controller
 
         for($i = 0; $i < $count; ++$i){
             $d = DB::table('holesale_carts')->where('userID', $id)->first();
+            $stockID = $d->stockID;
             $sale = new HoleSales();
             $sale->billID = $billID;
             $sale->itemID = $d->itemID;
@@ -51,7 +52,7 @@ class HoleSalesController extends Controller
             $cart = HolesaleCart::find($d->cartID);
             $cart-> delete();
 
-            $stockQty = DB::table("stocks")->where('stockID', $d->stockID)->pluck('qty');
+            $stockQty = DB::table("stocks")->where('stockID', $stockID)->pluck('qty');
             $stockQty = (int)substr($stockQty, 1, -1);
             $value = $stockQty - (int)$d->cartQty;
             DB::table('stocks')->where('stockID', (int)$d->stockID)->update(array('qty' => $value));
@@ -60,14 +61,16 @@ class HoleSalesController extends Controller
     }
 
     function billFetch($id){
-        $data = DB::table('hole_sales')->where('billID', $id)->get();
+        $data = DB::table('hole_sales')->where('billID', $id)
+                    ->join('items','items.itemID', '=', 'hole_sales.itemID')
+                    ->join('stocks','stocks.stockID', '=', 'hole_sales.stockID')->get();
         return response()->json($data, 200);
     }
 
     function downloadBill($id){
         $data = DB::table('hole_sales')->where('billID', $id)
-                    ->join('items','items.itemID', '=', 'sales.itemID')
-                    ->join('stocks','stocks.stockID', '=', 'sales.stockID')->get();
+                    ->join('items','items.itemID', '=', 'hole_sales.itemID')
+                    ->join('stocks','stocks.stockID', '=', 'hole_sales.stockID')->get();
         $pdf = PDF::loadView('pdf', compact('data'));
         $lable = 'Bill'.$id.'.pdf';
         return $pdf->download($lable);

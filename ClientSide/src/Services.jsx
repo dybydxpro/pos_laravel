@@ -157,6 +157,8 @@ class Service {
         return http.get(`/sale/downloadBill/${id}`);
     }
 
+
+
     fetchAllHSBillItems(){
         return http.get('/holesale/fetchAllBillItems/'); 
     }
@@ -175,6 +177,35 @@ class Service {
 
     downloadHoleSaleBill(id){
         return http.get(`/holesale/downloadBill/${id}`);
+    }
+
+    //Dashboard functions
+    lessStock(){
+        return http.get('/dashboard/lessStock');
+    }
+
+    topSellItem(){
+        return http.get('/dashboard/topSellItem');
+    }
+
+    topHSSellItem(){
+        return http.get('/dashboard/topHSSellItem');
+    }
+
+    chartData(){
+        return http.get('/dashboard/chartData');
+    }
+
+    dailyChartData(){
+        return http.get('/dashboard/dailyChartData');
+    }
+
+    holesaleChartData(){
+        return http.get('/dashboard/holesaleChartData');
+    }
+
+    holesaleDailyChartData(){
+        return http.get('/dashboard/holesaleDailyChartData');
     }
 }
 

@@ -9,6 +9,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\HoleSaleCartController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\HoleSalesController;
+use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -92,4 +94,14 @@ Route::prefix('/holesale')->group(function () {
     Route::get('/sellBillItems/{id}', [HoleSalesController::class, 'sellBillItems']); //OK
     Route::get('/billFetch/{id}', [HoleSalesController::class, 'billFetch']); //OK
     Route::get('/downloadBill/{id}', [HoleSalesController::class, 'downloadBill']); //OK
+});
+
+Route::prefix('/dashboard')->group(function () {
+    Route::get('/lessStock', [DashboardController::class, 'lessStock']); //OK
+    Route::get('/topSellItem', [DashboardController::class, 'topSellItem']); //
+    Route::get('/topHSSellItem', [DashboardController::class, 'topHSSellItem']); //OK
+    Route::get('/chartData', [DashboardController::class, 'chartData']); //OK
+    Route::get('/dailyChartData', [DashboardController::class, 'dailyChartData']); //OK
+    Route::get('/holesaleChartData', [DashboardController::class, 'holesaleChartData']); //OK
+    Route::get('/holesaleDailyChartData', [DashboardController::class, 'holesaleDailyChartData']); //OK
 });

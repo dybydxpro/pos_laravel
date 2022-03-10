@@ -20,6 +20,9 @@ import AdminBillFetch from "./Components/Admin/AdminBillFetch";
 import AdminHoleSaleBillFetch from "./Components/Admin/AdminHoleSaleBillFetch";
 import SaleBill from "./Components/Admin/Comps/SaleBill";
 import Holesalebill from "./Components/Admin/Comps/Holesalebill";
+import Dashboard from "./Components/Admin/AdminReportDashboard";
+import AdminMonthlyReport from "./Components/Admin/AdminMonthlyReport";
+import AdminDailyReport from "./Components/Admin/AdminDailyReport";
 
 import CashierItemFetch from './Components/Cashier/CashierItemFetch';
 import CashierItemAdd from './Components/Cashier/CashierItemAdd';
@@ -60,6 +63,9 @@ function App() {
           <Route path="/admin/holesale/" element={<AdminHoleSaleBillFetch />} />
           <Route path="/admin/holesale/add/" element={<AdminHoleSaleBillAdd />} />
           <Route path="/admin/holesale/printbill/:id" element={<Holesalebill />} />
+          <Route path="/admin/dashboard/dashboard" element={<Dashboard />} />
+          <Route path="/admin/dashboard/daily" element={<AdminDailyReport />} />
+          <Route path="/admin/dashboard/monthly" element={<AdminMonthlyReport />} />
 
           <Route path="/cashier" element={<CashierDashboad />} />
           <Route path="/cashier/item" element={<CashierItemFetch />} />

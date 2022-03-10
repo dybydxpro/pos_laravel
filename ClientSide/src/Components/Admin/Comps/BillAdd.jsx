@@ -232,7 +232,7 @@ class BillAdd extends React.Component{
                         </div>
                         <div className="mb-3">
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="1" onChange={(e) => this.checkBox(e)} value="" id="checkBox"/>
+                                <input className="form-check-input" type="checkbox" value="1" onChange={(e) => this.checkBox(e)} id="checkBox"/>
                                 <label className="form-check-label" htmlFor="checkeBox"> Discount in persentage (%) </label>
                             </div>
                             <div className="form-floating">

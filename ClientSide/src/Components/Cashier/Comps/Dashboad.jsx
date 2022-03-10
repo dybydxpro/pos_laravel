@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import Admin from "./../../../image/Admin.png";
+import Cashier from "./../../../image/profile.png";
 
 function Dashboard(){
     const navigate = useNavigate();
@@ -64,7 +64,7 @@ function Dashboard(){
                 <hr/>
                 <div className="dropdown">
                     <a href="/" className="d-flex align-items-center link-light text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src={Admin} alt="" width="32" height="32" className="rounded-circle me-2"/>
+                        <img src={Cashier} alt="" width="32" height="32" className="rounded-circle me-2"/>
                         <strong>{userName}</strong>
                     </a>
                     <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
