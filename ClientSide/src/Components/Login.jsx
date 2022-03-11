@@ -34,6 +34,7 @@ function Login(){
             navigate("/cashier");
           }
         }).catch(({response})=>{
+            alert("Email or password wrong!");
           console.log(response);
         });
     }
