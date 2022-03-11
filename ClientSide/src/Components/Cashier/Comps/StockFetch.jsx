@@ -56,7 +56,6 @@ function StockFetch(){
                             <th scope="col" width="150px">Holesale Retail Price (Rs.)</th>
                             <th scope="col" width="150px">Retail Price (Rs.)</th>
                             <th scope="col" width="100px">Creater ID</th>
-                            <th scope="col" width="150px">Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,9 +70,6 @@ function StockFetch(){
                                     <td className="text-end">{datas.holesaleretail_price.toFixed(2)}</td>
                                     <td className="text-end">{datas.retail_price.toFixed(2)}</td>
                                     <td className="text-center">{datas.stockCreaterID}</td>
-                                    <td className="text-center">
-                                        <Link to={`/cashier/stock/edit/${datas.stockID}`} className='btn btn-warning me-2'><i className="bi bi-pencil-square"></i> &nbsp; Edit </Link>
-                                    </td>
                                 </tr>
                             )
                         }
