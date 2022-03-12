@@ -21,6 +21,8 @@ class GoodReceivingNote extends Model
         "bulckPrice",
         "actualBulkPrice",
         "grnRecorderID",
+        "dueDate",
+        "remarks"
     ];
 
     protected $primaryKey = 'grnID';
