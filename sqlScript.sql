@@ -15,8 +15,8 @@ select * from hole_sales;
 select * from pay_details;
 select * from pay_h_s_details;
 
-INSERT INTO users (name, userName, password, type, created_at, updated_at) VALUES ( "Tharindu", "TharinduD", "123", "Admin", Null, Null);
-INSERT INTO users (name, userName, password, type, created_at, updated_at) VALUES ( "Sandun", "Sandun", "123", "Cashier", Null, Null);
+INSERT INTO users (name, userName, password, type, status, created_at, updated_at) VALUES ( "Tharindu", "TharinduD", "123", "Admin", "Active", Null, Null);
+INSERT INTO users (name, userName, password, type, status, created_at, updated_at) VALUES ( "Sandun", "Sandun", "123", "Cashier", "Active", Null, Null);
 
 INSERT INTO items (item, unit, createrID, created_at, updated_at) VALUES ( "Soap 100g", "Pcs", 1, Null, Null);
 INSERT INTO items (item, unit, createrID, created_at, updated_at) VALUES ( "Cement 50kg", "Bags", 1, Null, Null);

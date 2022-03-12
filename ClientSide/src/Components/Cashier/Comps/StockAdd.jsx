@@ -55,12 +55,12 @@ function StockAdd(){
                         <label htmlFor="unit">Qty {"("+ temp.unit +")"}</label>
                     </div>
                     <div className="form-floating mb-3">
-                        <input type="text" className="form-control" id="holesale_price" onChange={(e) => handle(e)} placeholder="Holesale Price" required/>
-                        <label htmlFor="unit">Holesale Price (Rs.)</label>
+                        <input type="text" className="form-control" id="holesale_price" onChange={(e) => handle(e)} placeholder="Wholesale Price" required/>
+                        <label htmlFor="unit">Wholesale Price (Rs.)</label>
                     </div>
                     <div className="form-floating mb-3">
-                        <input type="text" className="form-control" id="holesaleretail_price" onChange={(e) => handle(e)} placeholder="Holesale Retail Price" required/>
-                        <label htmlFor="unit">Holesale Retail Price (Rs.)</label>
+                        <input type="text" className="form-control" id="holesaleretail_price" onChange={(e) => handle(e)} placeholder="Wholesale Retail Price" required/>
+                        <label htmlFor="unit">Wholesale Retail Price (Rs.)</label>
                     </div>
                     <div className="form-floating mb-3">
                         <input type="text" className="form-control" id="retail_price" onChange={(e) => handle(e)} placeholder="Retail Price" required/>

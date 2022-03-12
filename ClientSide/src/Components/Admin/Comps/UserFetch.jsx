@@ -53,6 +53,7 @@ function UserFetch(){
                             <th scope="col">Name</th>
                             <th scope="col" width="150px">User Name</th>
                             <th scope="col" width="150px">Type</th>
+                            <th scope="col" width="150px">Status</th>
                             <th scope="col" width="300px">Options</th>
                         </tr>
                     </thead>
@@ -64,6 +65,7 @@ function UserFetch(){
                                     <td>{datas.name}</td>
                                     <td className="text-center">{datas.userName}</td>
                                     <td className="text-center">{datas.type}</td>
+                                    <td className="text-center">{datas.status}</td>
                                     <td className="text-center">
                                         <Link to={`/admin/user/edit/${datas.id}`} className='btn btn-warning me-2'><i className="bi bi-pencil-square"></i> &nbsp; Edit </Link>
                                         &nbsp;

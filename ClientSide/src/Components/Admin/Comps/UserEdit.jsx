@@ -61,6 +61,13 @@ function UserEdit(){
                         </select>
                         <label htmlFor="type" className="form-label">Type</label>
                     </div>
+                    <div className="form-floating mb-3">
+                        <select className="form-select form-select" id="status" value={ data.status } onChange={(e) => handle(e)}  aria-label=".form-select-sm example">
+                            <option value="Active">Active</option>
+                            <option value="Deactive">Deactive</option>
+                        </select>
+                        <label htmlFor="status" className="form-label">Status</label>
+                    </div>
                     <button type="submit" className="btn btn-primary"><i className="bi bi-download"></i> &nbsp;Submit</button>
                 </form>
             </div>

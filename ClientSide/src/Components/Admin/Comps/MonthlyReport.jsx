@@ -30,7 +30,7 @@ function MonthlyReport(){
                 xaxis: {
                     categories: categories
                 },
-                colors: ["#181818"]
+                //colors: ["#181818"]
             });
             setSeries([
                 {
@@ -60,7 +60,7 @@ function MonthlyReport(){
                 xaxis: {
                     categories: categories
                 },
-                colors: ["#181818"]
+                //colors: ["#181818"]
             });
             setSeriesh([
                 {

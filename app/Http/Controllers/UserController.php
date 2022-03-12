@@ -9,7 +9,7 @@ use App\Models\User;
 class UserController extends Controller
 {
     public function getAllUser(){
-        $user = User::All("id", "name", "userName", "type");
+        $user = User::All("id", "name", "userName", "type", "status");
         return response()->json($user, 200);
     }
 
@@ -22,6 +22,7 @@ class UserController extends Controller
                 $data->name = $user["name"];
                 $data->userName = $user["userName"];
                 $data->type = $user["type"];
+                $data->status = $user["status"];
                 return response()->json($data, 200);
             }
             else{
@@ -40,7 +41,7 @@ class UserController extends Controller
         ]);
 
         $data = $request->all();
-        $password = User::All()->where('userName', $data['userName'])->first()->password;
+        $password = User::All()->where('userName', $data['userName'])->where('status', "Active")->first()->password;
 
         if($password == ""){
             return response()->json("Email is wrong.", 400);
@@ -75,6 +76,7 @@ class UserController extends Controller
         $user->userName = $data['userName'];
         $user->password = $data['password'];
         $user->type = $data['type'];
+        $user->status = "Active";
         $user->save();
         return response()->json($user, 200);
     }
@@ -85,6 +87,7 @@ class UserController extends Controller
             'name' => 'required',
             'userName' => 'required',
             'type' => 'required',
+            'status' => 'required',
         ]);
 
         $data = $request->All();
@@ -93,6 +96,7 @@ class UserController extends Controller
         $user->name = $data['name'];
         $user->userName = $data['userName'];
         $user->type = $data['type'];
+        $user->status = $data['status'];
         $user->update($data);
         return response()->json($user, 200);
     }
