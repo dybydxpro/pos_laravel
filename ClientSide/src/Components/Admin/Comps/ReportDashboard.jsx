@@ -118,7 +118,7 @@ class ReportDashboard extends React.Component{
             else{
                 return(
                     saleReminds.map((data) =>
-                        <li className="list-group-item bg-info text-dark" key={data.payID}>Date: <b>{data.dueDate}</b>, &nbsp; Payment Type: <b>{data.payType}</b> &nbsp; Value: <b>{data.payblePrice}</b></li>
+                        <li className="list-group-item bg-info text-dark" key={data.payID}>Date: <b>{data.dueDate}</b>, &nbsp; Payment Type: <b>{data.payType}</b> &nbsp; Value: <b>{data.payblePrice}</b> <br/> Remarks: <b>{data.remakes}</b> </li>
                     )
                 )
             }   
@@ -133,7 +133,7 @@ class ReportDashboard extends React.Component{
             else{
                 return(
                     holeSaleReminds.map((data) =>
-                        <li className="list-group-item bg-secondary text-light" key={data.payID}>Date: <b>{data.dueDate}</b>, &nbsp; Payment Type: <b>{data.payType}</b> &nbsp; Value: <b>{data.payblePrice}</b></li>
+                        <li className="list-group-item bg-secondary text-light" key={data.payID}>Date: <b>{data.dueDate}</b>, &nbsp; Payment Type: <b>{data.payType}</b> &nbsp; Value: <b>{data.payblePrice}</b> <br/> Remarks: <b>{data.remakes}</b> </li>
                     )
                 )
             }   
