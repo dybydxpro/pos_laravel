@@ -16,13 +16,50 @@ function UserAdd(){
 
     const addUser = async(e) => {
         e.preventDefault();
-        await Services.createNewUser(data)
-        .then(({data})=>{
-          console.log(data);
-          navigate("/admin/user");
-        }).catch(({response})=>{
-          console.log(response);
-        })
+        if(passwordValidate()){
+            if(data.password == data.confirmPassword){
+                Services.createNewUser(data)
+                .then(({data})=>{
+                    console.log(data);
+                    navigate("/admin/user");
+                }).catch(({response})=>{
+                    console.log(response);
+                })
+            }
+            else{
+                alert("Password not match!");
+            }
+        }
+        else{
+            alert("Password is not valid!");
+        }
+    }
+
+    function passwordValidate(){
+        if(pwLength() && pwNumbers()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    // function password validate
+    function pwLength(){
+        var password = data.password;
+        if (password.length>=8){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function pwNumbers(){
+        var password = data.password;
+        if (/\d/.test(password)){
+            return true;
+        }
     }
         
     return(

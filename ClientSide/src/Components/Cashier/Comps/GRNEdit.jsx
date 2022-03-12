@@ -40,7 +40,7 @@ function GRNEdit(){
     return(
         <div className="container">
             <div className="detailBoxXL shadow bg-body rounded">
-                <h1 className='h1 d-flex justify-content-center'>New Good Receiving Note.</h1>
+                <h1 className='h1 d-flex justify-content-center'>Edit Good Receiving Note.</h1>
                 <br/>
                 <form onSubmit={ (e)=>editGRN(e) }>
                     <div className="row row-cols-3">
